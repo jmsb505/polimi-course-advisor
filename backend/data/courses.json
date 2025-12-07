@@ -1,0 +1,682 @@
+[
+  {
+    "code": "088983",
+    "name": "FOUNDATIONS OF OPERATIONS RESEARCH",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "MANDATORY",
+    "ssd": [
+      "MAT/09"
+    ],
+    "description": "The course aims at providing the students with the modeling skills and methodological tools that are needed to model and solve a wide range of decision making problems arising in computer science and in other closely related fields. The main topics include: graph and network optimization, linear programming and integer programming.",
+    "alpha_group_last": {
+      "from": "Q",
+      "to": "ZZZZ",
+      "lecturer": "Malucelli Federico"
+    }
+  },
+  {
+    "code": "054443",
+    "name": "SOFTWARE ENGINEERING 2",
+    "cfu": 0.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "MANDATORY",
+    "ssd": [
+      "ING-INF/05"
+    ],
+    "description": "The goal of the course is to enable students to master the main engineering methods and processes that are necessary to produce complex software with industrial strength quality. The course covers the software process and its organization, modeling languages, definition and analysis of requirements, design methods and tools, software verification and validation. Each topic is treated both theoretically and practically.",
+    "alpha_group_last": {
+      "from": "Q",
+      "to": "ZZZZ",
+      "lecturer": "Di Nitto Elisabetta"
+    }
+  },
+  {
+    "code": "056901",
+    "name": "SYSTEMS AND METHODS FOR BIG AND UNSTRUCTURED DATA",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "MANDATORY",
+    "ssd": [
+      "ING-INF/05"
+    ],
+    "description": "The objective of the course is to address the problems, solutions, methods,\n  and technologies for big data storage and management, with special emphasis\n  on scalability and persistency. The course is organized in two main\n  parts. The first part covers the main principles and approaches of big data\n  management, spanning issues like scalability, transactionality, and\n  distribution of data. The second part covers the different approaches to\n  unstructured data management, describing data models, query languages, and\n  architectural solutions for non-relational data storage, also known as noSQL\n  solutions, spanning graph, columnar, documental, key-value, and IR-based\n  databases.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Brambilla Marco"
+    }
+  },
+  {
+    "code": "056889",
+    "name": "FOUNDATIONS OF ARTIFICIAL INTELLIGENCE",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "MANDATORY",
+    "ssd": [
+      "ING-INF/05"
+    ],
+    "description": "Introduzione all'intelligenza artificiale.\nSpazio degli stati e relativi metodi per la risoluzione di problemi.\nLogica e ragionamento.\nPianificazione automatica.\nAspetti fondazionali, storici e filosofici dell'intelligenza artificiale.",
+    "alpha_group_last": {
+      "from": "M",
+      "to": "ZZZZ",
+      "lecturer": "Lanzi Pierluca"
+    }
+  },
+  {
+    "code": "054307",
+    "name": "ARTIFICIAL NEURAL NETWORKS AND DEEP LEARNING",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "MANDATORY",
+    "ssd": [
+      "ING-INF/05"
+    ],
+    "description": "Neural networks are mature, flexible, and powerful non-linear data-driven models that have successfully solved many complex tasks in science and engineering. The advent of the deep learning paradigm, i.e., training (neural) networks to simultaneously learn an optimal data representation and a model solving the requested task, has further boosted neural networks research and development. These models nowadays achieve human-like performance in natural language processing, text modeling, gene expression modeling, and image recognition, to name a few examples. This course provides a broad introduction to artificial neural networks (ANN), starting from the traditional feedforward (FFNN) and recurrent (RNN) neural networks architectures, till the most successful deep-learning models including convolutional neural networks (CNN) and long short-term memories (LSTM). The course aims at providing students with a theoretical background and the practical skills to understand and use ANN and, at the same time, become familiar and with Deep Learning for solving complex engineering problems.",
+    "alpha_group_last": {
+      "from": "O",
+      "to": "ZZZZ",
+      "lecturer": "Boracchi Giacomo"
+    }
+  },
+  {
+    "code": "056892",
+    "name": "DATA MINING",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "MANDATORY",
+    "ssd": [
+      "ING-INF/05"
+    ],
+    "description": "Machine Learning techniques are very important tools of Data Mining. This course introduces the many relevant algorithms developed in this area that are applied to extract interesting knowledge from data such as decision and regression trees, classification and association rules, clustering, Bayesian networks, etc. The course also illustrates the steps of a typical Data Mining process.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Lanzi Pierluca"
+    }
+  },
+  {
+    "code": "097677",
+    "name": "COMPUTER ETHICS",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "MANDATORY",
+    "ssd": [
+      "FIL/02"
+    ],
+    "description": "Firstly, the course examines the context in which are included the main social, ethical and deontological issues of ICT, clarifying. what is the so-called Information Society and the need for and the characteristics of an ethics for the so-called Computer (or Digital) Age. Afterward, the course examines the main topics of the Computer Ethics: the impact of ICT on work; the impact of ICT on citizen' 'life (e-Government & e-Democracy); the privacy problem; ICT and intellectual property: ethical issues of Internet; computer crimes; the \"digital divide\" in the world;  professional deontology, codes of ethics and professional conduct in ICT milieu.\n1.\tThe context: the Information Economy and Society\n2.\tWhat is Computer Ethics?\n3.\tImpact of ICT on work\n4.\tImpact of ICT on citizens' life: e-Government & e-Democracy\n5.\tThe privacy problem \n6.\tICT and intellectual property \n7.\tEthical issues of Internet:  \"Search Engine Ethics\", etc. \n8.\tComputer crimes\n9.\tThe \"digital divide\"\n10.\tprofessional deontology, codes of ethics and professional conduct in ICT milieu.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Schiaffonati Viola"
+    }
+  },
+  {
+    "code": "056955",
+    "name": "APPLIED AI IN BIOMEDICINE",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "APPLICATIONS",
+    "ssd": [
+      "ING-INF/06"
+    ],
+    "description": "The course describes the applications of artificial intelligence (AI) tools to the analysis of biomedical signals, image and data, learning how to cope the peculiar needs of these applications. The current healthcare practice including AI will be described, together with issues related to security, ethical and legal aspects. The current AI developments in different areas will be covered: precision medicine, diagnostic image processing and radiomics, biosignal classifications, staging and patient risk stratification, surgical planning, treatments strategy selection for oncology patients.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Corino Valentina"
+    }
+  },
+  {
+    "code": "091041",
+    "name": "AUDIO SIGNALS",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "APPLICATIONS",
+    "ssd": [
+      "ING-INF/03"
+    ],
+    "description": "The aim of this course is to provide the student with an in-depth knowledge of selected and advanced topics on audio analysis, synthesis and processing. The course is application-oriented, therefore it includes laboratory and experimental activities. The course will cover topics in the areas of sound analysis and recognition; sound rendering and virtual acoustics; wavefield analysis and synthesis; sound synthesis and structured audio.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Bestagini Paolo"
+    }
+  },
+  {
+    "code": "056807",
+    "name": "AUTOMATION AND CONTROL IN AUTONOMOUS VEHICLES",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "APPLICATIONS",
+    "ssd": [
+      "ING-INF/04"
+    ],
+    "description": "The objective of the course is the development of a general and specific know-how on the estimation and control methods for the autonomous navigation of vehicles. The course focuses on ground vehicles and, more specifically, on passenger cars and alike. The course deals with the fundamental problems of trajectory and speed-profile generation, trajectory-tracking, positioning and obstacle-detection, and provides an overview of the main sensing and SW-sensing technologies in autonomous cars.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Corno Matteo"
+    }
+  },
+  {
+    "code": "095944",
+    "name": "BIOINFORMATICS AND COMPUTATIONAL BIOLOGY",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "APPLICATIONS",
+    "ssd": [
+      "ING-INF/05"
+    ],
+    "description": "The simultaneous progress of information technologies and bio-nano-technologies, and their application to the study of biological phenomena, enabled the development of new disciplines such as Bioinformatics and Computational Biology, as well as the increasing growth of available biomolecular information and the widening of bio-medical-molecular knowledge, which are starting to be applied also in the healthcare field.\n\nThe course aims to illustrate principles, technologies, methods and informatics instruments for the computational analysis, information content increment and interpretation of biological data produced by genome sequencing, proteomics and measurements of gene expression and cellular metabolic flows. It will be highlighted as the application to biological data of the engineering themes of data bases, information theory, data mining and others can contribute to the increasing of biomedical knowledge and a better health treatment.\n\nThe course main objective is to give a systematic view of a multidisciplinary sector and to provide the base knowledge and instruments required to tackle various issues in computational biology and to take advantage of the opportunities offered by the recent bioinformatics development.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Masseroli Marco"
+    }
+  },
+  {
+    "code": "056879",
+    "name": "BIOMEDICAL SIGNAL PROCESSING",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "APPLICATIONS",
+    "ssd": [
+      "ING-INF/06"
+    ],
+    "description": "The course is intended to recall general signal processing aspects, to introduce new methods beyond those considered in the bachelor degree and examine various clinical and research application fields. Methods. From deterministic filtering to the stochastic parametric identification: mono and multi-variate AR/MA/ARMA models and parametric spectral analysis. Principal component analysis. Entropy in signal processing. Applications. Automatic analysis and classification of the electrocardiographic signal (ECG). The autonomic nervous system, cardiovascular variability signals, and cardiorespiratory interactions. Foetal ECG signal. High resolution ECG and late ventricular potentials. The central nervous system: processing of the electroencephalographic signal (EEG).",
+    "alpha_group_last": null
+  },
+  {
+    "code": "095945",
+    "name": "ICT FOR HEALTH CARE",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "APPLICATIONS",
+    "ssd": [
+      "ING-INF/05"
+    ],
+    "description": "Information and communication technologies (ICT) are having a tremendous impact on health care research and clinical practice, and on the development of healthcare systems. The course presents computer science principles, technologies, methods and instruments for the structured collection, integration, sharing and computational analysis of clinical information and biomedical knowledge. It will point out as information and knowledge engineering can profitably support the effective management of medical, clinical and biomolecular data, and contribute to extract their valuable information content toward improving biomedical knowledge and health care. Students will build knowledge on issues related to bio-medical-molecular data and clinical information, and will develop skills on ICT instruments enabling the interoperability and development of applications to manage and process such data and information; this will make them able to take advantage of the opportunities offered by the increasing ICT development and relevance in the health care.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Masseroli Marco"
+    }
+  },
+  {
+    "code": "056878",
+    "name": "MEDICAL IMAGES",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "APPLICATIONS",
+    "ssd": [
+      "ING-INF/06"
+    ],
+    "description": "Introduction to the principal imaging diagnostic systems: analysis of the relevant features: spatial resolution, contrast, signal to noise ratio, artifacts. Basic principles for image processing and reconstruction: 2D Fourier transform, sampling and quantization, enhancement techniques (spatial filtering, equalization), geometric operations tomographic reconstruction. X ray images: planar radiographs, digital radiology, angiography, transmission tomography (CT). Emission images with radiotracers: scintigraphy and gamma-camera, emission tomography (SPECT and PET). Magnetic resonance imaging (MRI): T1 and T2 contrast, construction of MRI (basic acquisition sequences, frequency and phaseencoding, k-space), functional MRI (brief remark). Ultrasound (US) imaging: echography, doppler, other contrast means.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Baselli Giuseppe"
+    }
+  },
+  {
+    "code": "052534",
+    "name": "RECOMMENDER SYSTEMS",
+    "cfu": 0.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "APPLICATIONS",
+    "ssd": [
+      "ING-INF/05"
+    ],
+    "description": "Recommender systems aim to support users in their decision-making while interacting with large information spaces. They recommend items of interest to users based on preferences they have expressed, either explicitly or implicitly. Recommender systems help overcome the information overload problem by exposing users to the most interesting items, and by offering novelty, surprise, and relevance. This course gave a tutorial about the leading approaches in recommender systems. The techniques described touch both collaborative and content-based approaches and include a number of algorithms that result in techniques. The course also explore alternative techniques of evaluating recommender systems.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Ferrari Dacrema Maurizio"
+    }
+  },
+  {
+    "code": "093060",
+    "name": "SAFETY IN AUTOMATION SYSTEMS",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "APPLICATIONS",
+    "ssd": [
+      "ING-INF/04"
+    ],
+    "description": "The aim of the course is to present the main techniques for the safety and reliability analysis of industrial systems, such as the Preliminary Hazard Analysis, the Failure Mode and Effect Analysis, the Fault Tree Analysis. Then, the most frequently used methods for the fault detection and diagnosis in industrial systems will be described. In particular, data-driven methods will be introduced, such as the principal component analysis and the control charts. In the final part of the course, analytical techniques for fault detection and diagnosis will be introduced, such as those based on recursive estimation algorithms, state observers, parity equations. A number of industrial examples will be discussed to illustrate the main characteristics of the methods.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Scattolini Riccardo"
+    }
+  },
+  {
+    "code": "054316",
+    "name": "VIDEO SIGNALS",
+    "cfu": 0.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "APPLICATIONS",
+    "ssd": [
+      "ING-INF/03"
+    ],
+    "description": "The aim of this course is to provide the student with an in-depth knowledge of selected and advanced topics on image and video analysis and processing. The course will cover topics in the areas of Image Analysis, and pattern recognition; feature extraction; image segmentation; advanced image rendering; and Computer Vision. The course is application-oriented; therefore, it includes laboratory and experimental activities, furthermore some parts follow an innovative education approach where lessons are delivered with a hybrid learning and flipped classroom approach.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Marcon Marco"
+    }
+  },
+  {
+    "code": "062260",
+    "name": "VIDEOGAME DESIGN AND PROGRAMMING",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "APPLICATIONS",
+    "ssd": [
+      "ING-INF/05"
+    ],
+    "description": "In this course, students will learn the basics of videogame design and the basics of videogame programming. They will attend seminars from field experts and form project groups to design, build and demonstrate a simple video game. The course is organized in a series of game design lectures, invited seminars for professionals, and afternoon workshops focused on game design and development.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Lanzi Pierluca"
+    }
+  },
+  {
+    "code": "056888",
+    "name": "BIOMEDICAL SIGNAL PROCESSING AND MEDICAL IMAGES  [I.C.]",
+    "cfu": 0.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "APPLICATIONS",
+    "ssd": [
+      "ING-INF/06"
+    ],
+    "description": "Essential aspects of signal and image processing, methods of signal treatment, main imaging diagnostic systems and exam of various clinical and research application fields. From deterministic filtering to stochastic parametric identification: monovariate AR/MA/ARMA models and parametric spectral analysis. Principal component method (PCA). Entropy for signal and image treatment. Automatic analysis and classification of ECG signal. Autonomic Nervous System: cardiovascular variability signals and interaction with respiration. Fetal ECG, High resolution ECG. Ventricular late potentials. Central Nervous System: EEG signal processing and sensorial evoked potentials.\nBasic principles for image processing and reconstruction: 2D Fourier transform, sampling and quantization, spatial filtering, equalization, geometric operations, tomographic reconstruction. X ray images, transmission tomography (CT). Emission images with radiotracers: scintigraphy, gamma-camera, SPECT and PET. Magnetic resonance imaging (MRI): basic acquisition sequences, T1 and T2 contrast, frequency and phase encoding. Functional MRI (brief remark). Ultrasound (US) imaging: echography and Doppler.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "BIOMEDICAL SIGNAL PROCESSING AND MEDICAL IMAGES [2]"
+    }
+  },
+  {
+    "code": "054301",
+    "name": "E-HEALTH METHODS AND APPLICATIONS [I.C.]",
+    "cfu": 0.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "APPLICATIONS",
+    "ssd": [
+      "ING-INF/06"
+    ],
+    "description": "Information and Communications Technology (ICT) is a key component to ensuring quality, safety, access and efficiency in healthcare. This course introduces current approaches and future directions in e-health and the use of ICT in healthcare in general, as well as key concepts and tools from the underlying discipline of health informatics.\nTopics include: electronic health records (EHRs); hospital and primary care and public health information systems; supporting clinical decision-making for health professionals through ICT; e-health in the community for preventive healthcare and for patient and career support; regulatory influences on e-health including management and governance, privacy, security, and confidentiality; the role of data standards, vocabularies, and nomenclatures in e-health; research and development in e-health.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "E-HEALTH METHODS"
+    }
+  },
+  {
+    "code": "063937",
+    "name": "ADVANCED TOPICS IN CODESIGN OF DOMAIN-SPECIFIC ACCELERATED COMPUTING ARCHITECTURES AND SYSTEMS",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "DOT",
+    "ssd": [
+      "ING-INF/05"
+    ],
+    "description": "The domain of applications drives innovation in computer architectures and systems research. Embracing a codesign approach to the computing stack - comprising high-level algorithms, software design, and computer architectures -  where each part pushes the other and different expertise blends is the way to push the boundaries of computing knowledge.\n\n//\n\nThe course will introduce the motivations and concepts of domain-specific architectures (DSAs) - especially highlighted from the Hennessey and Patterson Turing award lecture -, illustrating some of their key features. Case studies like Anton molecular dynamics DSA and IBM Power Edge of Network heterogeneous SoC will be presented. A spotlight on the breakthrough Artificial Intelligence domain will explore the full spectrum of domain specialization, from small chips to large-scale systems. Guest lectures from industrial researchers are already planned with partners.\nOne key innovation to this specialized system is the ease of hardware design. Therefore, Prof Josipovic will introduce the topic of  Computer-Aided Design (CAD) for emerging specialized accelerators, articulated into compiling software programs into circuits, provably correct circuit design, architecture-aware and low-power hardware optimizations in CAD tools, and efficient design-space exploration techniques for fast and accurate estimations.\n\n//\n\nThe last part of the course is a simulated conference review process through a tool used in research conferences (hotcrp). Students must read manuscripts from the top venues of the field (provided by the lecturers) and review them, highlighting strengths and weaknesses. Then, in a plenary session, lecturers will moderate the program committee discussion, where students will present their pros and cons for accepting or rejecting the manuscripts to reach an agreed-upon consensus.",
+    "alpha_group_last": null
+  },
+  {
+    "code": "063993",
+    "name": "CLOUD COMPUTING: FROM ENTERPRISE APPLICATIONS TO AI@EDGE",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "DOT",
+    "ssd": [
+      "ING-INF/05"
+    ],
+    "description": "The course presents the different aspects of designing and deploying applications in the cloud providing an overview of the core services and middleware to enable service integration also across multiple cloud providers. Moreover, the course will introduce the fundamentals of edge computing, its role in reducing latency and improving real-time processing, and how it complements cloud infrastructure in distributed AI systems. Finally, students will also develop hands-on skills in cloud platforms, edge frameworks, and tools to design, deploy, and manage cloud and edge applications.\n\n  \nDay 1: Cloud computing introduction: Cloud systems evolution. Current market. From cloud to computing continuum. Current cloud technology challenges. \n\n\nDay 2: MS Azure \n- Part 1: Scalable application development with message-oriented architecture. Designing and implementing a scalable web application on Azure platform using Azure App Services for hosting.  Application Insights for monitoring, and Service Bus for message handling.\n- Part 2: Application Security. How the Azure cloud can help hosting applications securely. Topics include using Azure Front Door WAF, network isolation (Virtual Networks and Private Endpoints/Links), and authentication used Managed Identity.\n\n\nDay 3: MS Azure \n- Part 1: Infrastructure-as-Code - Bicep vs Terraform. Automated resource deployment and configuration with a standard and repeatable approach. Topics include designing a resource deployment strategy in both Bicep and Terraform and highlight the differences.\n- Part 2: Azure AI Foundry. Prompt flow & AI Apps. Develop AI application using Prompt Flow and integrating AI services on Azure platform. Agentic AI.\n\nDay 4: AWS \n- Part 1: Internet of Things on AWS. This lesson covers designing scalable, secure IoT solutions using edge computing and AWS services. Participants will learn to build modular IoT apps with decentralized logic, leveraging pub/sub, event-driven models, and containerized deployments on AWS IoT Core and Greengrass. \n- Part 2: Data on AWS. This lesson teaches building a modern data architecture on AWS. Topics include setting up a secure data lake, implementing data movement, applying data security controls, exploring and transforming data, deriving business value through ML and analytics, and enabling secure cross-account data sharing.\n \nDay 5: AWS \n- Part 1: AI/ML on AWS. This session introduces machine learning and generative AI on AWS. The first part covers traditional ML concepts and hands-on model building using Amazon SageMaker. The second part explores advanced topics like attention mechanisms, large language models, and multimodal AI for text-to-image generation.\n- Part 2: Cloud in the real World with AWS. This lesson examines strategic cloud and AI/ML adoption in enterprises, using real-world AWS customer use cases. Students will explore how leading organizations leverage these technologies to drive digital transformation, enhance customer experiences, enable data-driven decisions, and gain a competitive edge.\n\nDay 6: Google\n- The technology under the hood.  Google cloud platform auto scaling algorithms and load balancing, overcommitment and large-scale data transfers.",
+    "alpha_group_last": null
+  },
+  {
+    "code": "063938",
+    "name": "DATA SCIENCE FOR BIOINFORMATICS AND HEALTHCARE",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "DOT",
+    "ssd": [
+      "ING-INF/05"
+    ],
+    "description": "The course will be organized into five self-contained 4-hour classes, which will guide the audience through important computational and data management paradigms applied to biology and genomics. A final 5-hour class will be dedicated to the presentation and interactive discussion of students' review reports on selected topics relevant to the course.\n\nProgramme:\n\n1) Biology & Genomics research concepts and application perspectives:\nGenomic research concepts: overview and application perspective, including precision medicine. Introduction to common bioinformatics data and formats; related bioinformatics algorithms and tools (e.g., read mapping, variant calling). Types of omics data with their peculiarities and challenges.\n\n2) Biological databases overview and data integration:\nThe Genomic Conceptual Model. Overview of main biology and genomics databases. Integration of region data and metadata of genomic experiments within open data repositories. Knowledge engineering aspects for genomics and biology (biomedical domain-specific ontologies, semantic search over genomic datasets). FAIR principles' compliance and contemporary data interoperability.\n\n3) Omics Data Science:\nStages of the Omics Data Science lifecycle from raw data to new knowledge. Omics feature engineering including encoding and selection strategies with examples of methods and applications. Predictive tasks for Precision Medicine including examples of patient stratifications in oncogenomics. Models' evaluation and interpretability using XAI, search on knowledge bases, and statistical tests. Open challenges for real-world tasks in multi-omics data integration, imbalance data handling, and other common issues.\n\n4) Generative models for biomedical data:\nOverview of the importance and opportunities of synthetic data in omics data science. Review of the main generative frameworks, including variational autoencoders, generative adversarial networks, and diffusion models. Concepts and techniques for conditional data generation. Methods for the quality assessment of synthetic datasets. Examples of the generation of transcriptomic profiles.\n\n5) Viruses' Data Science:\nA primer of viral genomics. The Viral Conceptual Model (modeling and interoperating data and knowledge). Overview of concepts and related data about mutations (nucleotide and amino acid levels), variants, phylogenetic trees, evolution, recombination, and reassortment. Example exploratory analysis on SARS-CoV-2, Influenza Type A, Monkeypox. Frontiers of pathogens' genomic surveillance.\n\n6) Conclusions:\nFinal exam, with students' presentations about their reports (review of a selection of papers relevant to a course topic), flipped feedback, and interactive discussion on the presented works.",
+    "alpha_group_last": null
+  },
+  {
+    "code": "063941",
+    "name": "PERFORMANCE MODELLING TECHNIQUES FOR CLOUD COMPUTING, BIG DATA, ARTIFICIAL INTELLIGENCE AND DEEP LEARNING APPLICATIONS",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "DOT",
+    "ssd": [
+      "ING-INF/05"
+    ],
+    "description": "The course will present the basic analytical and discrete event simulation techniques to study the performance and properly planning the resources required to exploit Cloud-based infrastructures, Big Data frameworks, Deep Learning and Artificial Intelligence Applications.\nThe proposed techniques will be explained by examples coming from the considered scenarios, showing how they can be applied in these contexts.\n\nThe program of the course will be divided in two parts: the first will focus on the presentation of the basic techniques. The second, will propose several case studies, which can be successfully analyzed using the considered techniques. In particular, the program is the following:\n\nPart I (17.5 hours)\n\n1.\tPoisson process and one-dimensional Markov chain\n2.\tMarkovian Queues and Queueing Networks\n3.\tM/G/1 and GI/M/1 Queues\n4.\tFundamentals of Structured Markov Chains: QBD, M/G/1-type, G/M/1-type\n5.\tApplications of Structured Markov Chains: Models for Data Centers, Call Centers, Cellular Networks and 5G systems.\n6.\tFork and Join Queueing Networks\n7.\tStochastic Petri Nets\n8.\tMulti-Formalism Models\n\nPart II (7.5 hours)\n\n9.\tModelling of Big Data Solutions\n10.\tModelling of Artificial Intelligence Techniques\n11.\tModelling of Deep Learning Training\n12.\tModelling of the execution of Neural Network based solutions",
+    "alpha_group_last": null
+  },
+  {
+    "code": "052499",
+    "name": "BAYESIAN STATISTICS",
+    "cfu": 0.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "GROUNDINGS",
+    "ssd": [
+      "SECS-S/01",
+      "MAT/06"
+    ],
+    "description": "Basics of Bayesian inference:  Bayes's theorem, prior and posterior distribution, predictive distribution, prior elicitation, exchangeability. Simulation methods for Bayesian Statistics, Goodness-of-fit and model choice, linear and generalized linear models, Bayesian survival analysis with censored data, Bayesian nonparametric models, introduction to Bayesian models for longitudinal data, time series and  spatial data.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Guglielmi Alessandra"
+    }
+  },
+  {
+    "code": "089182",
+    "name": "FORMAL LANGUAGES AND COMPILERS",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "GROUNDINGS",
+    "ssd": [
+      "ING-INF/05"
+    ],
+    "description": "Theorerical concepts and algorithms for language definition and  compiler design. Regular expressions, finite automata, and convertion from one model to the other. Context free grammars, ambiguity, structural adequacy. Linguistic abstraction. Syntax directed transaltion, attribute grammars, and semantic analysis. Principles of dat flow analysis for programs.",
+    "alpha_group_last": {
+      "from": "Q",
+      "to": "ZZZZ",
+      "lecturer": "Breveglieri Luca Oddone"
+    }
+  },
+  {
+    "code": "088976",
+    "name": "GAME THEORY",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "GROUNDINGS",
+    "ssd": [
+      "MAT/05"
+    ],
+    "description": "On the main assumptions of the theory. Interactive decision theory vs classical decision theory. Games in extensive form. Combinatorial games. Zero sum games and Von Neumann theorem. Games and linear programming. The non cooperative model by Nash. Examples of games and their equilibria. Potential games.  Correlated equilibria. Cooperative games: definition and examples. Some solution concepts: imputations, core, nucleolus, power indices.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Valente Giovanni"
+    }
+  },
+  {
+    "code": "055697",
+    "name": "NUMERICAL ANALYSIS FOR MACHINE LEARNING",
+    "cfu": 0.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "GROUNDINGS",
+    "ssd": [
+      "MAT/08"
+    ],
+    "description": "Part I: 1) Mathematical representation of neural networks; 2) Numerical Linear Algebra tools; 3) Approximation properties of neural networks; \nPart II: 1) Numerical optimization for nueral networks; 2) Training of neural networks; 3) Hint to AI and ML applications.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Miglio Edie"
+    }
+  },
+  {
+    "code": "062130",
+    "name": "SIGNAL PROCESSING AND LEARNING",
+    "cfu": 0.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "GROUNDINGS",
+    "ssd": [
+      "ING-INF/03"
+    ],
+    "description": "The course deals with fundamentals of the estimation theory, statistical signal processing and time-data analytics using an application-driven approach with several interdisciplinary engineering examples from audio/video and digital communications, vibration analysis, imaging and remote sensing, GPS and navigation systems. Goal is to gain practice on the following key-topics: algebra for signal processing and estimation theory, fundamentals of the estimation theory (BLUE, MLE, CRB, MMSE, MAP), parameter tracking and Kalman filtering, and adaptive LMS/RLS filtering. Spectral analysis (AR/MA/ARMA) and high-resolution methods for line spectra and array processing. Detection theory, pattern and feature detection/classification, and supervised/unsupervised classification methods. Exercises are on theoretical aspects and practical cases with the use of Matlab software and Montecarlo simulation. During the semester there are 3 interactive exercises on practical cases by students organized in working groups.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Spagnolini Umberto"
+    }
+  },
+  {
+    "code": "099993",
+    "name": "IMAGE ANALYSIS AND COMPUTER VISION",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "METHODS",
+    "ssd": [
+      "ING-INF/05"
+    ],
+    "description": "Thepurpose of the Image Analysis and Computer Vison course is to study both the foundationson image formation,\nimage analysis, and themethodology underlying the solution techinques to the main problems involved.\nImage analysisaddresses the extraction of the content of one or several images, in order to obtain a representaton of the observed3Dscene trough Computer Vision.\nOptical aspects, geometrical ones, and algorithmicaspects arestudied,\nas well as aspects connected to signal processing and data analysis.\nA project allows to closely examine, possibly from a practical point of view,one or more of the discussed topics.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Caglioti Vincenzo"
+    }
+  },
+  {
+    "code": "056893",
+    "name": "MULTIAGENT SYSTEMS",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "METHODS",
+    "ssd": [
+      "ING-INF/05"
+    ],
+    "description": "Introduction to the concepts of autonomous agents and of multiagent systems. \nAutonomous agents as rational decision makers: architectures for intelligent agents, Markov decision processes.\nInteractions between self-interested agents: short introduction to game theory, negotiations, voting mechanisms, auctions for resource allocation, coalition formation.\nInteractions between cooperative agents: decision-theoretic multiagent planning, distributed constraint optimization.\nMultiagent learning: multiagent Markov decision processes and stochastic games, evolutionary game theory.\nExamples of real-world applications of agent-based systems",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Amigoni Francesco"
+    }
+  },
+  {
+    "code": "056890",
+    "name": "UNCERTAINTY IN ARTIFICIAL INTELLIGENCE",
+    "cfu": 0.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "METHODS",
+    "ssd": [
+      "ING-INF/05"
+    ],
+    "description": "Soft Computing: modeling reality under uncertainty conditions. Fuzzy models: fuzzy sets, fuzzy logic, fuzzy rules, what to represent with a fuzzy model and why. Genetic algorithms: basic principles, model optimization, fitness functions, model definition. Bayesian networks: probabilistic graphic models, basic principles, definition of models. Applications: motivations, choices, models, case studies",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Bonarini Andrea"
+    }
+  },
+  {
+    "code": "053583",
+    "name": "HIGH-TECH STARTUPS: CREATING AND SCALING UP I",
+    "cfu": 0.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "SOFT SKILLS",
+    "ssd": [
+      "ING-IND/35"
+    ],
+    "description": "The course is conceived as an experiential based learning process, where students acquire frameworks, models and tools to develop their business. For this purpose, they leverage the experience and mentoring of practitioners, i.e. entrepreneurs, venture capitalists, business angels, incubator/accelerator's managers. In this first module, students will focus on developing an original business idea and designing a startup's business model around it. The business model will be validated through Lean Startup approaches and will feed a final deliverable consisting of a written document that illustrates and tests the business model and an \"elevator pitch\" to be presented to a committee composed of practitioners.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Piva Evila"
+    }
+  },
+  {
+    "code": "056048",
+    "name": "PHILOSOPHY OF SCIENCE AND TECHNOLOGY",
+    "cfu": 0.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "SOFT SKILLS",
+    "ssd": [
+      "FIL/02"
+    ],
+    "description": "",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Valente Giovanni"
+    }
+  },
+  {
+    "code": "059448",
+    "name": "CREATIVITY, SCIENCE AND INNOVATION",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "SOFT SKILLS",
+    "ssd": [
+      "FIL/01",
+      "ING-INF/05"
+    ],
+    "description": "The course addresses the topic of creativity, particularly in the fields of science and technology, with the aim of stimulating in students an awareness that there are some key factors for creating more creative work environments and ways of acting and thinking. After a theoretical foundation on creativity in general and creativity in the fields of science and technology, with particular reference to the works of Kuhn and Popper, a series of methodologies are proposed for laboratory experimentation, inspired of the studies of Resnick, De Bono, Kelley and other authors. The approach is validated practically through the conduct of group projects on given topics, to be tackled in interdisciplinary groups.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "CREATIVITY, SCIENCE AND INNOVATION MODULE 2"
+    }
+  },
+  {
+    "code": "095946",
+    "name": "ADVANCED ALGORITHMS AND PARALLEL PROGRAMMING",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "TECH&INNOVATION",
+    "ssd": [
+      "ING-INF/05"
+    ],
+    "description": "This course deals with advanced topics in algorithm design and parallel programming.\nThe course is structured in two parts. The first part focuses on general methods and algorithms that are not usually covered by the course \"Algoritmi e Principi dell'Informatica\", such as, randomization, amortization, approximation algorithms, string searching/matching, etc.\nThe second part deals with parallel programming: Automatic vs. Manual Parallelization, Parallelizing Compilers, Parallel Patterns, Partitioning (domain vs functional decomposition), Communication (cost, latency, bandwidth, visibility, synchronization, etc.), Data Dependencies and Tools/languages such as OpenMP, MPI and CUDA.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Ferrandi Fabrizio"
+    }
+  },
+  {
+    "code": "055701",
+    "name": "COMPUTATIONAL STATISTICS",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "TECH&INNOVATION",
+    "ssd": [
+      "MAT/08",
+      "SECS-S/01"
+    ],
+    "description": "This is a course about exploring random systems and performing uncertainty quantification using computer simulations. The goal of the course is to introduce computational tools aiming at: (i) describing uncertainty sources in general systems, with special emphasis on differential models, and (ii) analyzing the impact of uncertainty on systems' outcomes, involving sensitivity analysis, uncertainty propagation from inputs to outputs, and input parameter estimation from noisy observations.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Manzoni Andrea"
+    }
+  },
+  {
+    "code": "056490",
+    "name": "DATA AND INFORMATION QUALITY",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "TECH&INNOVATION",
+    "ssd": [
+      "ING-INF/05"
+    ],
+    "description": "The course focuses on data quality that can be defined as the fitness of a\n  data source for a specific use. The course aims to present the basic\n  concepts, models and techniques of data quality assessment and\n  improvement. The course identifies the possible issues (e.g., errors,\n  missing data and inconsistencies) that can affect different data sources\n  (e.g., structured databases, logs, social media content, sensor values) and\n  describes the methods and the tools to address them. Some topics that will\n  be presented during the course are: data governance, data quality dimensions\n  and metrics, data profiling, data cleaning, duplicate detections, data\n  fusion.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Cappiello Cinzia"
+    }
+  },
+  {
+    "code": "089183",
+    "name": "DATA BASES 2",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "TECH&INNOVATION",
+    "ssd": [
+      "ING-INF/05"
+    ],
+    "description": "The course aims to prepare software designers on the effective development of database applications. First, the course presents the fundamental features of current database architectures, with a specific  emphasis on the concept of transaction and its realization in centralized  and distributed systems. Then, the course illustrates the main directions in the evolution of database systems, presenting approaches that go  beyond the relational model, like active databases, object systems and XML data management solutions.",
+    "alpha_group_last": {
+      "from": "Q",
+      "to": "ZZZZ",
+      "lecturer": "Comai Sara"
+    }
+  },
+  {
+    "code": "056895",
+    "name": "STREAMING DATA ANALYTICS G",
+    "cfu": 5.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "TECH&INNOVATION",
+    "ssd": [
+      "ING-INF/05"
+    ],
+    "description": "The course provides the foundational concepts and methods for designing, storing, analyzing and managing semi-structured and unstructured data, both in batch and in streaming. The course aims to tame the variety (data in many forms) and velocity (analyzing data streams to enable real-time decisions) dimensions of Big Data, without forgetting the volume dimension.\nThe variety-oriented part of the course will focus on NoSQL (and not-only-SQL) models and technologies. Students will learn how to select appropriate data management solutions to deal with scalability, availability, consistency, performance and expressiveness requirements.\nThe velocity-oriented part of the course will focus on time series, data streams and events both from a deductive and an inductive perspective. The deductive one focuses on domain-specific languages and knowledge representation techniques. The inductive one examines machine-learning problems focusing on massive online learning and, in particular, on the ability to learn when to forget past information.\nFinally, the course will cover the basic aspects of the data analysis pipeline: acquisition, integration, exploration, mining, analytics, visualization, and interpretation. Students will perform hands-on activities on cloud-based Big Data platforms oriented to variety and velocity, addressing real-life data management and data science scenarios.",
+    "alpha_group_last": {
+      "from": "A",
+      "to": "ZZZZ",
+      "lecturer": "Della Valle Emanuele"
+    }
+  },
+  {
+    "code": "052537",
+    "name": "TECHNOLOGIES FOR INFORMATION SYSTEMS",
+    "cfu": 0.0,
+    "semester": 1,
+    "language": "UNKNOWN",
+    "group": "TECH&INNOVATION",
+    "ssd": [
+      "ING-INF/05"
+    ],
+    "description": "Decision-making is based on information, not just on data. More accurate information leads to better decisions and gives competitive advantages to organizations. Hence, processing, manipulating, and organizing data in a way that adds new knowledge to the person or organization receiving it has become a necessary issue.The goal of the course is to enable the students to master the engineering methods and processes that are necessary to manage modern information system, and especially data-intensive systems: these include all the large data collections,  belonging to corporate, scientific, social or other sources. The ultimate goal is to understand the utility of the methods that precede and support the data analysis process, to obtain useful knowledge and improve decision-making. As a consequence,  we expose the students to some of the most advanced methodologies adopted to understand the conceptual and technological problems encountered in the design and implementation of  \"data products\": tangible results based on the analysis of complex systems whose  basic materials are   collections of data that must be integrated, organized and analyzed mainly through automatic tools",
+    "alpha_group_last": {
+      "from": "M",
+      "to": "ZZZZ",
+      "lecturer": "Tanca Letizia"
+    }
+  }
+]
