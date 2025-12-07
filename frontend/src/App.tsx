@@ -1,75 +1,160 @@
-import React, { useEffect, useState } from "react";
-
-type HealthResponse = {
-  status: string;
-  service: string;
-  phase: number;
-};
+import { useEffect, useState } from "react";
+import "./App.css";
+import type {
+  ChatMessage,
+  StudentProfile,
+  RankedCourse,
+} from "./types/chat";
+import { ChatPane } from "./components/ChatPane";
+import { ProfileSummary } from "./components/ProfileSummary";
+import { RecommendationsList } from "./components/RecommendationsList";
+import { postChat, getHealth } from "./api/client";
 
 function App() {
-  const [health, setHealth] = useState<HealthResponse | null>(null);
+  const [messages, setMessages] = useState<ChatMessage[]>([
+    {
+      role: "assistant",
+      content:
+        "Hi! I’m your course advisor. Tell me what you like, what you hate, and what your goals are, and I’ll suggest PoliMi courses for you.",
+    },
+  ]);
+  const [profile, setProfile] = useState<StudentProfile | null>(null);
+  const [recommendations, setRecommendations] = useState<RankedCourse[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [backendOnline, setBackendOnline] = useState<boolean | null>(null);
 
   useEffect(() => {
-    const fetchHealth = async () => {
-      try {
-        const res = await fetch("http://localhost:8000/api/health");
-        if (!res.ok) {
-          throw new Error(`HTTP ${res.status}`);
-        }
-        const data: HealthResponse = await res.json();
-        setHealth(data);
-      } catch (err: any) {
-        setError(err?.message ?? "Unknown error");
-      } finally {
-        setLoading(false);
-      }
-    };
+    let cancelled = false;
 
-    fetchHealth();
+    (async () => {
+      try {
+        await getHealth();
+        if (!cancelled) {
+          setBackendOnline(true);
+        }
+      } catch (err) {
+        console.error("API health check failed:", err);
+        if (!cancelled) {
+          setBackendOnline(false);
+          setError((prev) =>
+            prev ?? "Backend is not reachable. Make sure the API is running.",
+          );
+        }
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
+  const handleSendMessage = async (text: string) => {
+    const trimmed = text.trim();
+    if (!trimmed) return;
+    if (isLoading) return;
+
+    if (backendOnline === false) {
+      setError(
+        "Backend is offline. Start the API on the backend and reload this page.",
+      );
+      return;
+    }
+
+    setError(null);
+
+    const userMessage: ChatMessage = {
+      role: "user",
+      content: trimmed,
+    };
+
+    const newMessages = [...messages, userMessage];
+    setMessages(newMessages);
+    setIsLoading(true);
+
+    try {
+      const response = await postChat({
+        messages: newMessages,
+        current_profile: profile ?? undefined,
+      });
+
+      const assistantMessage: ChatMessage = {
+        role: "assistant",
+        content: response.reply,
+      };
+
+      setMessages((prev) => [...prev, assistantMessage]);
+      setProfile(response.updated_profile ?? null);
+      setRecommendations(response.recommendations ?? []);
+    } catch (err) {
+      console.error("Chat error:", err);
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Something went wrong while talking to the advisor.",
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const statusLabel =
+    backendOnline === null
+      ? "Checking API…"
+      : backendOnline
+        ? "API online"
+        : "API offline";
+
+  const statusClass =
+    backendOnline === null
+      ? "status-unknown"
+      : backendOnline
+        ? "status-online"
+        : "status-offline";
+
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontFamily:
-          "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-      }}
-    >
-      <div style={{ textAlign: "center" }}>
-        <h1>Hello, AI Advisor PoC</h1>
-        <p>
-          Frontend and backend scaffolds are running. This page also checks the backend
-          health endpoint.
-        </p>
-        <div
-          style={{
-            marginTop: "1rem",
-            padding: "0.75rem 1rem",
-            borderRadius: "0.5rem",
-            border: "1px solid #ddd",
-            display: "inline-block",
-            fontFamily: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
-            fontSize: "0.9rem",
-          }}
-        >
-          {loading && <span>Checking backend health...</span>}
-          {!loading && error && (
-            <span>Backend health error: {error}</span>
-          )}
-          {!loading && health && (
-            <span>
-              Backend: {health.status} | service: {health.service} | phase:{" "}
-              {health.phase}
-            </span>
-          )}
+    <div className="app-root">
+      <header className="app-header">
+        <div className="header-main">
+          <h1>PoliMi Course Advisor (PoC)</h1>
+          <p className="app-subtitle">
+            Chat about your interests and see tailored course suggestions for
+            the first semester.
+          </p>
         </div>
-      </div>
+        <div className={`backend-status ${statusClass}`}>
+          <span className="dot" />
+          <span className="status-text">{statusLabel}</span>
+        </div>
+      </header>
+      <main className="main-layout">
+        <section className="chat-section panel">
+          <div className="panel-header">
+            <h2>Chat</h2>
+          </div>
+          {error && <div className="error-banner">{error}</div>}
+          <ChatPane
+            messages={messages}
+            isLoading={isLoading}
+            onSendMessage={handleSendMessage}
+            disabled={backendOnline === false}
+          />
+        </section>
+        <aside className="context-section">
+          <section className="panel">
+            <div className="panel-header">
+              <h2>Your profile</h2>
+            </div>
+            <ProfileSummary profile={profile} />
+          </section>
+          <section className="panel">
+            <div className="panel-header">
+              <h2>Recommended courses</h2>
+            </div>
+            <RecommendationsList recommendations={recommendations} />
+          </section>
+        </aside>
+      </main>
     </div>
   );
 }
