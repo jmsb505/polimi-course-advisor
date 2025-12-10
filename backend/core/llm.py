@@ -203,6 +203,7 @@ def _normalize_profile(
     return merged
 
 
+
 def _merge_lists(existing: List[str], new: List[str]) -> List[str]:
     """
     Append new items that are not already present (case-sensitive).
@@ -213,3 +214,61 @@ def _merge_lists(existing: List[str], new: List[str]) -> List[str]:
             existing.append(item)
             seen.add(item)
     return existing
+
+
+
+def generate_course_explanations(
+    profile: StudentProfile,
+    courses: List[Dict[str, Any]],
+) -> Dict[str, str]:
+    """
+    Ask the LLM to briefly explain why each recommended course fits the student profile.
+    Returns a dict mapping course code -> explanation string.
+    """
+    if not courses:
+        return {}
+        
+    ensure_openai_api_key()
+
+    # Simplify courses for the prompt to save tokens
+    simple_courses = []
+    for c in courses:
+        simple_courses.append({
+            "code": c.get("code"),
+            "name": c.get("name"),
+            "group": c.get("group"),
+        })
+
+    payload = {
+        "student_profile": profile,
+        "courses": simple_courses,
+    }
+
+    system_instructions = (
+        "You are an academic advisor for a Politecnico di Milano MSc program. "
+        "Given a student profile and a list of courses, explain briefly why each course fits the student. "
+        "Write very concise, 1-2 sentence explanations, focused on interests, dislikes, and goals. "
+        "Respond ONLY with JSON of the form:\n"
+        "{ \"explanations\": { \"COURSE_CODE\": \"explanation\", ... } }"
+    )
+
+    messages = [
+        {"role": "system", "content": system_instructions},
+        {"role": "user", "content": json.dumps(payload, ensure_ascii=False)},
+    ]
+
+    try:
+        completion = client.chat.completions.create(
+            model=OPENAI_MODEL_REPLY, # reuse the reply model (usually cheap/fast)
+            messages=messages, # type: ignore
+            temperature=0.7,
+            response_format={"type": "json_object"},
+        )
+        raw = completion.choices[0].message.content or "{}"
+        data = json.loads(raw)
+        explanations = data.get("explanations", {})
+        return {str(k): str(v) for k, v in explanations.items()}
+    except Exception:
+        # If anything fails (rate limit, parsing), safely return empty dict
+        # so we don't block the response.
+        return {}

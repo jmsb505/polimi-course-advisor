@@ -26,8 +26,30 @@ export interface RankedCourse {
     language: string;
     group: string;
     score: number;
+    explanation?: string;
     // allow additional backend fields without breaking typing
     [key: string]: unknown;
+}
+
+export interface GraphNode {
+    code: string;
+    label: string;
+    score: number;
+    is_recommended: boolean;
+    group: string | null;
+}
+
+export interface GraphEdge {
+    source: string;
+    target: string;
+    weight: number;
+    concepts: string[];
+    reasons: string[];
+}
+
+export interface GraphView {
+    nodes: GraphNode[];
+    edges: GraphEdge[];
 }
 
 export interface ChatRequestPayload {
@@ -39,4 +61,5 @@ export interface ChatResponsePayload {
     reply: string;
     updated_profile: StudentProfile;
     recommendations: RankedCourse[];
+    graph_view?: GraphView | null;
 }

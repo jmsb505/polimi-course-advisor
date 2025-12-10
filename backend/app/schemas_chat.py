@@ -52,15 +52,50 @@ class ChatRequest(BaseModel):
     top_k: int = 5
 
 
+
+class GraphNode(BaseModel):
+    code: str
+    label: str
+    score: float
+    is_recommended: bool
+    group: Optional[str] = None
+
+
+class GraphEdge(BaseModel):
+    source: str
+    target: str
+    weight: float
+    concepts: List[str]
+    reasons: List[str]
+
+
+class GraphView(BaseModel):
+    nodes: List[GraphNode]
+    edges: List[GraphEdge]
+
+
+class CourseRecommendation(BaseModel):
+    code: str
+    name: str
+    score: float
+    group: Optional[str] = None
+    explanation: Optional[str] = None
+    cfu: float = 0.0
+    semester: int = 1
+    language: str = "UNKNOWN"
+    reason_tags: List[str] = []
+
+
 class ChatResponse(BaseModel):
     """
     Response payload for /api/chat.
 
     - reply: assistant's natural-language reply.
     - updated_profile: merged profile after this turn.
-    - recommendations: list of course dicts (we'll reuse existing course
-      structures from the ranker; for now we keep this as list[dict]).
+    - recommendations: list of CourseRecommendation objects.
+    - graph_view: optional subgraph visualization data.
     """
     reply: str
     updated_profile: StudentProfileModel
-    recommendations: list[dict]
+    recommendations: List[CourseRecommendation]
+    graph_view: Optional[GraphView] = None

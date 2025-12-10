@@ -4,10 +4,12 @@ import type {
   ChatMessage,
   StudentProfile,
   RankedCourse,
+  GraphView,
 } from "./types/chat";
 import { ChatPane } from "./components/ChatPane";
 import { ProfileSummary } from "./components/ProfileSummary";
 import { RecommendationsList } from "./components/RecommendationsList";
+import { GraphPanelPlaceholder } from "./components/GraphPanelPlaceholder";
 import { postChat, getHealth } from "./api/client";
 
 function App() {
@@ -20,6 +22,7 @@ function App() {
   ]);
   const [profile, setProfile] = useState<StudentProfile | null>(null);
   const [recommendations, setRecommendations] = useState<RankedCourse[]>([]);
+  const [graphView, setGraphView] = useState<GraphView | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [backendOnline, setBackendOnline] = useState<boolean | null>(null);
@@ -86,6 +89,7 @@ function App() {
       setMessages((prev) => [...prev, assistantMessage]);
       setProfile(response.updated_profile ?? null);
       setRecommendations(response.recommendations ?? []);
+      setGraphView(response.graph_view ?? null);
     } catch (err) {
       console.error("Chat error:", err);
       setError(
@@ -147,7 +151,13 @@ function App() {
             </div>
             <ProfileSummary profile={profile} />
           </section>
-          <section className="panel">
+          <section className="panel" style={{ flex: 1.5 }}>
+            <div className="panel-header">
+              <h2>Course Graph</h2>
+            </div>
+            <GraphPanelPlaceholder graphView={graphView} />
+          </section>
+          <section className="panel" style={{ flex: 2 }}>
             <div className="panel-header">
               <h2>Recommended courses</h2>
             </div>

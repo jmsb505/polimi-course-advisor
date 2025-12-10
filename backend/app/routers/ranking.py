@@ -10,9 +10,18 @@ from ..schemas_chat import ChatRequest, ChatResponse, StudentProfileModel
 
 # Import Core definitions
 from ...core.models import Course
-from ...core.ranking import rank_courses as core_rank_courses  # type: ignore
-from ...core.llm import generate_reply, extract_profile, LLMServiceError
+from ...core.ranking import (
+    rank_courses as core_rank_courses,
+    build_graph_view_for_recommendations
+)
+from ...core.llm import (
+    generate_reply, 
+    extract_profile, 
+    generate_course_explanations,
+    LLMServiceError
+)
 from ...core.types import ChatMessage
+from ...app.schemas_chat import CourseRecommendation, GraphView
 
 # Router prefix is empty here so we can define /rank and /chat explicitly.
 # main.py mounts this router with prefix="/api".
@@ -157,6 +166,7 @@ async def chat_endpoint(payload: ChatRequest) -> ChatResponse:
     - Call the LLM to generate the next assistant reply.
     - Call the LLM again (JSON mode) to produce an updated StudentProfile.
     - Call the ranking helper to get top-N course recommendations.
+    - NEW: Generate explanations and graph view.
     """
 
     # 1) Build messages for the LLM, injecting our system prompt if needed.
@@ -221,19 +231,85 @@ async def chat_endpoint(payload: ChatRequest) -> ChatResponse:
 
     # 6) Compute recommendations using the same logic as /api/rank.
     profile_for_ranking = updated_profile_model.to_profile_dict()
-    top_k = payload.top_k
+    top_k = payload.top_k or 5
+
+    # Prepare extended fields
+    recs_out: List[CourseRecommendation] = []
+    graph_view_out: Optional[GraphView] = None
 
     # Only compute recommendations when the LLM says the profile is ready.
     if updated_profile_model.ready_for_recommendations:
-        recommendations = get_recommendations_for_profile(
+        recommendations_dicts = get_recommendations_for_profile(
             profile_for_ranking,
             top_k=top_k,
         )
-    else:
-        recommendations = []
+
+        # 7) Generate explanations
+        try:
+            explanations_map = generate_course_explanations(
+                updated_profile_dict, recommendations_dicts
+            )
+        except Exception:
+            explanations_map = {}
+
+        # 8) Convert to Pydantic objects
+        rec_codes = []
+        for r_dict in recommendations_dicts:
+            code = r_dict["code"]
+            rec_codes.append(code)
+            
+            recs_out.append(
+                CourseRecommendation(
+                    code=code,
+                    name=r_dict.get("name", ""),
+                    score=r_dict.get("score", 0.0),
+                    group=r_dict.get("group"),
+                    cfu=r_dict.get("cfu", 0.0),
+                    semester=r_dict.get("semester", 1),
+                    language=r_dict.get("language", "UNKNOWN"),
+                    reason_tags=r_dict.get("reason_tags", []),
+                    explanation=explanations_map.get(str(code))
+                )
+            )
+
+        # 9) Build Graph View
+        courses_raw = get_courses_raw()
+        graph_obj = get_graph()
+        
+        # We need Course objects for the helper
+        all_courses_objs = []
+        for item in courses_raw:
+             # Just quick reconstruction for the helper
+             # (ideally we should cache this list of objects)
+             ssd_raw = item.get("ssd", []) or []
+             ssd_list = [str(s).strip() for s in ssd_raw if s] if isinstance(ssd_raw, list) else [str(ssd_raw).strip()]
+             all_courses_objs.append(
+                Course(
+                    code=str(item.get("code", "")).strip(),
+                    name=str(item.get("name", "")).strip(),
+                    cfu=float(item.get("cfu", 0)),
+                    semester=int(item.get("semester", 0)),
+                    language=str(item.get("language", "") or "UNKNOWN").strip().upper(),
+                    group=str(item.get("group", "") or "UNKNOWN").strip(),
+                    ssd=ssd_list,
+                    description=str(item.get("description", "") or "").strip(),
+                    raw=item
+                )
+             )
+
+        gv_dict = build_graph_view_for_recommendations(
+            recommended_codes=rec_codes,
+            graph=graph_obj,
+            courses=all_courses_objs,
+            max_neighbors_per_node=4
+        )
+        # Convert typed dict to Pydantic model
+        if gv_dict and gv_dict["nodes"]:
+             graph_view_out = GraphView(**gv_dict)
 
     return ChatResponse(
         reply=reply_text,
         updated_profile=updated_profile_model,
-        recommendations=recommendations,
+        recommendations=recs_out,
+        graph_view=graph_view_out
     )

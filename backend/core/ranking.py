@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from typing import Dict, List, Set
 
 from .models import Course, StudentProfile, RankedCourse
+from .types import GraphView, GraphNode, GraphEdge
 from .graph import GraphAdjacency
 from .pagerank import personalized_pagerank
 from .text_utils import (
@@ -203,3 +204,140 @@ def rank_courses(
         ranked = ranked[:top_k]
 
     return ranked
+
+
+def _edge_concepts_for_pair(
+    course_a: Course,
+    course_b: Course,
+    weight: float
+) -> tuple[List[str], List[str]]:
+    """
+    Recover the likely reasons for an edge existence based on metadata.
+    Since we only store a float weight, we re-check group/SSD/text logic.
+    """
+    concepts: List[str] = []
+    reasons: List[str] = []
+
+    # Check Shared Group
+    group_a = (course_a.group or "").strip()
+    group_b = (course_b.group or "").strip()
+    if group_a and group_b and group_a == group_b:
+        concepts.append(f"Same Group: {group_a}")
+        reasons.append("shared_group")
+
+    # Check Shared SSD
+    ssd_a = set(course_a.ssd)
+    ssd_b = set(course_b.ssd)
+    common_ssd = ssd_a.intersection(ssd_b)
+    if common_ssd:
+        # Just pick one for brevity
+        concepts.append(f"Shared SSD: {next(iter(common_ssd))}")
+        reasons.append("shared_ssd")
+
+    # Heuristic for high text similarity if weight is significantly higher than structural components
+    # (This is approximate, as we don't know the exact config used)
+    if weight >= 0.5:
+        concepts.append("High text similarity")
+        reasons.append("text_similarity")
+
+    # Fallbacks
+    if not concepts:
+        concepts.append("Related content")
+    if not reasons:
+        reasons.append("graph_edge")
+
+    # Deduplicate while preserving order
+    return list(dict.fromkeys(concepts)), list(dict.fromkeys(reasons))
+
+
+def build_graph_view_for_recommendations(
+    recommended_codes: List[str],
+    graph: GraphAdjacency,
+    courses: List[Course],
+    pagerank_scores: Dict[str, float] | None = None,
+    max_neighbors_per_node: int = 4,
+) -> GraphView:
+    """
+    Construct a subgraph containing recommended courses and their top neighbors.
+    """
+    recommended_set = set(recommended_codes)
+    nodes_by_code: Dict[str, GraphNode] = {}
+    edges_list: List[GraphEdge] = []
+    seen_pairs: Set[tuple[str, str]] = set()
+
+    # Index courses for quick lookup
+    courses_map = {c.code: c for c in courses if c.code}
+
+    # Helper to create a node
+    def make_node(code: str, is_rec: bool) -> GraphNode:
+        c_obj = courses_map.get(code)
+        label = c_obj.name if c_obj else code
+        grp = c_obj.group if c_obj else None
+        
+        # Use provided PageRank score if avail, else 0.0
+        sc = 0.0
+        if pagerank_scores and code in pagerank_scores:
+            sc = pagerank_scores[code]
+
+        return GraphNode(
+            code=code,
+            label=label,
+            score=sc,
+            is_recommended=is_rec,
+            group=grp,
+        )
+
+    # 1. Add all recommended courses
+    for code in recommended_codes:
+        if code not in nodes_by_code:
+            nodes_by_code[code] = make_node(code, True)
+
+    # 2. For each recommended course, find top neighbors
+    for code in recommended_codes:
+        if code not in graph:
+            continue
+        
+        # Sort neighbors by weight descending
+        neighbors = sorted(
+            graph[code].items(),
+            key=lambda item: item[1],
+            reverse=True
+        )
+        # Take top K
+        top_neighbors = neighbors[:max_neighbors_per_node]
+
+        for nbr_code, w in top_neighbors:
+            # Ensure neighbor node exists
+            if nbr_code not in nodes_by_code:
+                nodes_by_code[nbr_code] = make_node(nbr_code, False)
+
+            # Create edge
+            pair = tuple(sorted((code, nbr_code)))
+            if pair in seen_pairs:
+                continue
+            seen_pairs.add(pair) # type: ignore
+
+            # Determine concepts/reasons
+            c_a = courses_map.get(code)
+            c_b = courses_map.get(nbr_code)
+            
+            concepts: List[str] = []
+            reasons: List[str] = ["graph_edge"]
+            
+            if c_a and c_b:
+                concepts, reasons = _edge_concepts_for_pair(c_a, c_b, w)
+
+            edges_list.append(
+                GraphEdge(
+                    source=code,
+                    target=nbr_code,
+                    weight=w,
+                    concepts=concepts,
+                    reasons=reasons,
+                )
+            )
+
+    return GraphView(
+        nodes=list(nodes_by_code.values()),
+        edges=edges_list,
+    )
