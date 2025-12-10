@@ -9,7 +9,7 @@ import type {
 import { ChatPane } from "./components/ChatPane";
 import { ProfileSummary } from "./components/ProfileSummary";
 import { RecommendationsList } from "./components/RecommendationsList";
-import { GraphPanelPlaceholder } from "./components/GraphPanelPlaceholder";
+import { GraphPanel } from "./components/GraphPanel";
 import { postChat, getHealth } from "./api/client";
 
 function App() {
@@ -23,6 +23,9 @@ function App() {
   const [profile, setProfile] = useState<StudentProfile | null>(null);
   const [recommendations, setRecommendations] = useState<RankedCourse[]>([]);
   const [graphView, setGraphView] = useState<GraphView | null>(null);
+  const [selectedCourseCode, setSelectedCourseCode] = useState<string | null>(
+    null,
+  );
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [backendOnline, setBackendOnline] = useState<boolean | null>(null);
@@ -90,6 +93,7 @@ function App() {
       setProfile(response.updated_profile ?? null);
       setRecommendations(response.recommendations ?? []);
       setGraphView(response.graph_view ?? null);
+      setSelectedCourseCode(null);
     } catch (err) {
       console.error("Chat error:", err);
       setError(
@@ -155,13 +159,21 @@ function App() {
             <div className="panel-header">
               <h2>Course Graph</h2>
             </div>
-            <GraphPanelPlaceholder graphView={graphView} />
+            <GraphPanel
+              graphView={graphView}
+              selectedCourseCode={selectedCourseCode}
+              onSelectCourse={setSelectedCourseCode}
+            />
           </section>
           <section className="panel" style={{ flex: 2 }}>
             <div className="panel-header">
               <h2>Recommended courses</h2>
             </div>
-            <RecommendationsList recommendations={recommendations} />
+            <RecommendationsList
+              recommendations={recommendations}
+              selectedCourseCode={selectedCourseCode}
+              onSelectCourse={setSelectedCourseCode}
+            />
           </section>
         </aside>
       </main>
