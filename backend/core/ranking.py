@@ -62,7 +62,7 @@ def _build_profile_signals(
             liked_neighbors.add(nbr)
 
     # Interests/goals
-    interest_weight = 2.0
+    interest_weight = 20.0
     if interest_token_sets:
         for code in nodes:
             tokens = tokens_map.get(code, set())
@@ -73,8 +73,12 @@ def _build_profile_signals(
             for q in interest_token_sets:
                 if not q:
                     continue
-                sim = jaccard_similarity(tokens, q)
-                if sim > 0:
+                # Use intersection over query length (Query Coverage)
+                # If the course has the interest keyword, score should be high (1.0),
+                # regardless of how long the course description is.
+                intersection_size = len(tokens & q)
+                if intersection_size > 0:
+                    sim = intersection_size / len(q)
                     score += sim
 
             if score > 0:
@@ -175,7 +179,7 @@ def rank_courses(
 
         if code in signals.interest_matched:
             tags["matched_interest"] = True
-            final_score *= 1.15
+            final_score *= 2.0
 
         if lang_pref in {"EN", "IT"} and course.language == lang_pref:
             tags["language_bonus"] = True

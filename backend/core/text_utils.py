@@ -25,7 +25,21 @@ def tokenize(text: str) -> Set[str]:
     """
     text = text.lower()
     tokens = _WORD_RE.findall(text)
-    return {t for t in tokens if t not in _STOPWORDS and len(t) > 1}
+    
+    # Naive stemming to handle basic plurals
+    def _naive_stem(w: str) -> str:
+        if w.endswith("s") and len(w) > 3:
+            return w[:-1]
+        return w
+
+    result = set()
+    for t in tokens:
+        if t in _STOPWORDS:
+            continue
+        if len(t) < 2:
+            continue
+        result.add(_naive_stem(t))
+    return result
 
 
 @lru_cache(maxsize=2048)
