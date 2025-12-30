@@ -1,11 +1,34 @@
 import React, { useState } from "react";
 import { supabase } from "../lib/supabase";
 
-export const LoginPage: React.FC = () => {
+import { getDemoCompanies } from "../api/demo";
+import type { DemoCompany } from "../types/demo";
+
+interface LoginPageProps {
+  onSelectCompany: (company: DemoCompany) => void;
+}
+
+export const LoginPage: React.FC<LoginPageProps> = ({ onSelectCompany }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showDemo, setShowDemo] = useState(false);
+  const [companies, setCompanies] = useState<DemoCompany[]>([]);
+
+  const handleFetchCompanies = async () => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const data = await getDemoCompanies();
+      setCompanies(data);
+      setShowDemo(true);
+    } catch (err) {
+      setError("Failed to load demo companies");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,34 +56,68 @@ export const LoginPage: React.FC = () => {
       <div className="login-box">
         <h2>Sign In</h2>
         <p className="login-subtitle">PoliMi Course Advisor</p>
-        <form onSubmit={handleLogin}>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              placeholder="student@example.com"
-            />
+        {!showDemo ? (
+          <>
+            <form onSubmit={handleLogin}>
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  placeholder="student@example.com"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="password">Password</label>
+                <input
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  placeholder="••••••••"
+                />
+              </div>
+              {error && <div className="error-message">{error}</div>}
+              <button type="submit" disabled={isLoading} className="login-btn">
+                {isLoading ? "Signing in..." : "Sign In"}
+              </button>
+            </form>
+            <div className="demo-divider">
+              <span>OR</span>
+            </div>
+            <button
+              className="demo-mode-btn"
+              onClick={handleFetchCompanies}
+              disabled={isLoading}
+            >
+              Explore Company Demo
+            </button>
+          </>
+        ) : (
+          <div className="demo-panel">
+            <h3>Select a Company</h3>
+            <p className="demo-hint">Experience how companies find the best talent.</p>
+            <div className="company-list">
+              {companies.map((c) => (
+                <button
+                  key={c.id}
+                  className="company-select-btn"
+                  onClick={() => onSelectCompany(c)}
+                >
+                  <div className="comp-name">{c.name}</div>
+                  <div className="comp-tagline">{c.tagline}</div>
+                </button>
+              ))}
+            </div>
+            <button className="back-btn" onClick={() => setShowDemo(false)}>
+              Back to Sign In
+            </button>
           </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              placeholder="••••••••"
-            />
-          </div>
-          {error && <div className="error-message">{error}</div>}
-          <button type="submit" disabled={isLoading} className="login-btn">
-            {isLoading ? "Signing in..." : "Sign In"}
-          </button>
-        </form>
+        )}
       </div>
       <style>{`
         .login-container {
@@ -215,6 +272,110 @@ export const LoginPage: React.FC = () => {
           opacity: 0.5;
           cursor: not-allowed;
           box-shadow: none;
+        }
+
+        .demo-divider {
+          display: flex;
+          align-items: center;
+          margin: 1.5rem 0;
+          color: #475569;
+          font-size: 0.8rem;
+          font-weight: 600;
+        }
+
+        .demo-divider::before,
+        .demo-divider::after {
+          content: "";
+          flex: 1;
+          height: 1px;
+          background: rgba(255, 255, 255, 0.05);
+        }
+
+        .demo-divider span {
+          padding: 0 0.75rem;
+        }
+
+        .demo-mode-btn {
+          width: 100%;
+          padding: 0.9rem;
+          background: rgba(255, 255, 255, 0.03);
+          color: #94a3b8;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 12px;
+          font-size: 0.9rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+
+        .demo-mode-btn:hover {
+          background: rgba(255, 255, 255, 0.05);
+          color: #f1f5f9;
+          border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .demo-panel h3 {
+          color: #f1f5f9;
+          margin: 0 0 0.5rem 0;
+          font-size: 1.5rem;
+          text-align: center;
+        }
+
+        .demo-hint {
+          color: #94a3b8;
+          font-size: 0.85rem;
+          margin-bottom: 2rem;
+          text-align: center;
+        }
+
+        .company-list {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          margin-bottom: 2rem;
+        }
+
+        .company-select-btn {
+          text-align: left;
+          padding: 1rem 1.25rem;
+          background: rgba(124, 58, 237, 0.05);
+          border: 1px solid rgba(124, 58, 237, 0.2);
+          border-radius: 14px;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+
+        .company-select-btn:hover {
+          background: rgba(124, 58, 237, 0.1);
+          transform: scale(1.02);
+          border-color: rgba(124, 58, 237, 0.4);
+        }
+
+        .comp-name {
+          color: #f1f5f9;
+          font-weight: 700;
+          font-size: 1rem;
+          margin-bottom: 0.25rem;
+        }
+
+        .comp-tagline {
+          color: #94a3b8;
+          font-size: 0.8rem;
+        }
+
+        .back-btn {
+          width: 100%;
+          padding: 0.75rem;
+          background: transparent;
+          color: #475569;
+          border: none;
+          font-size: 0.85rem;
+          font-weight: 600;
+          cursor: pointer;
+        }
+
+        .back-btn:hover {
+          color: #94a3b8;
         }
       `}</style>
     </div>

@@ -3,7 +3,9 @@ from typing import Optional
 from supabase import create_client, Client
 from dotenv import load_dotenv
 
-load_dotenv()
+# Load environment variables from the backend/.env file
+env_path = os.path.join(os.path.dirname(__file__), "..", ".env")
+load_dotenv(env_path)
 
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_SERVICE_ROLE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")

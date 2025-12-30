@@ -11,15 +11,17 @@ import { ProfileSummary } from "./components/ProfileSummary";
 import { RecommendationsList } from "./components/RecommendationsList";
 import { GraphPanel } from "./components/GraphPanel";
 import { postChat, getHealth, getRunSnapshot, deleteProfile } from "./api/client";
-import { DEMO_SCENARIOS, type DemoScenario } from "./demo/scenarios";
-import type { ChatResponsePayload } from "./types/chat";
+import { DEMO_SCENARIOS } from "./demo/scenarios";
 import { supabase } from "./lib/supabase";
 import { LoginPage } from "./components/LoginPage";
+import { CompanyDemoView } from "./components/CompanyDemoView";
+import type { DemoCompany } from "./types/demo";
 import type { Session } from "@supabase/supabase-js";
 
 function App() {
   const [session, setSession] = useState<Session | null>(null);
   const [authLoading, setAuthLoading] = useState(true);
+  const [selectedDemoCompany, setSelectedDemoCompany] = useState<DemoCompany | null>(null);
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: "assistant",
@@ -58,77 +60,44 @@ function App() {
     if (!session) return;
     let cancelled = false;
 
-    (async () => {
-      try {
-        await getHealth();
+    getHealth()
+      .then((data: any) => {
         if (!cancelled) {
-          setBackendOnline(true);
+          setBackendOnline(data.database === "ok");
         }
-      } catch (err) {
-        console.error("API health check failed:", err);
-        if (!cancelled) {
-          setBackendOnline(false);
-          setError((prev) =>
-            prev ?? "Backend is not reachable. Make sure the API is running.",
-          );
-        }
-      }
-    })();
+      })
+      .catch(() => {
+        if (!cancelled) setBackendOnline(false);
+      });
 
     return () => {
       cancelled = true;
     };
   }, [session]);
 
-  const updateStateFromResponse = (response: ChatResponsePayload, appendMessage: boolean = true) => {
-    if (appendMessage) {
-      const assistantMessage: ChatMessage = {
-        role: "assistant",
-        content: response.reply,
-      };
-      setMessages((prev) => [...prev, assistantMessage]);
-    }
-    setProfile(response.updated_profile ?? null);
-    setRecommendations(response.recommendations ?? []);
-    setGraphView(response.graph_view ?? null);
-    setSelectedCourseCode(null);
-
-    if (response.run_id) {
-      setLastRunId(response.run_id);
-      localStorage.setItem("lastRunId", response.run_id);
-    }
-  };
-
   const handleSendMessage = async (text: string) => {
-    const trimmed = text.trim();
-    if (!trimmed) return;
-    if (isLoading) return;
-
-    if (backendOnline === false) {
-      setError("Backend is offline. Start the API on the backend and reload this page.");
-      return;
-    }
-
+    setIsLoading(true);
     setError(null);
 
-    const userMessage: ChatMessage = {
-      role: "user",
-      content: trimmed,
-    };
-
-    const newMessages = [...messages, userMessage];
+    const newMessages: ChatMessage[] = [
+      ...messages,
+      { role: "user", content: text },
+    ];
     setMessages(newMessages);
-    setIsLoading(true);
 
     try {
-      const response = await postChat({
-        messages: newMessages,
-        current_profile: profile ?? undefined,
-      });
-      updateStateFromResponse(response);
+      const resp = await postChat({ messages: newMessages });
+      setMessages([...newMessages, { role: "assistant", content: resp.reply }]);
+      setProfile(resp.updated_profile);
+      setRecommendations(resp.recommendations);
+      setGraphView(resp.graph_view || null);
+
+      if (resp.run_id) {
+        setLastRunId(resp.run_id);
+        localStorage.setItem("lastRunId", resp.run_id);
+      }
     } catch (err) {
-      console.error("Chat error:", err);
-      setError(err instanceof Error ? err.message : "Something went wrong.");
+      setError(err instanceof Error ? err.message : "Something went wrong");
     } finally {
       setIsLoading(false);
     }
@@ -139,20 +108,22 @@ function App() {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await getRunSnapshot(lastRunId);
-      // For replay, we just replace current state
-      setMessages([{ role: "assistant", content: `(Replayed run ${lastRunId}) ${response.reply}` }]);
-      updateStateFromResponse(response, false);
+      const resp = await getRunSnapshot(lastRunId);
+      setMessages([
+        {
+          role: "assistant",
+          content: "Replayed last advisor snapshot:",
+        },
+        { role: "assistant", content: resp.reply },
+      ]);
+      setProfile(resp.updated_profile);
+      setRecommendations(resp.recommendations);
+      setGraphView(resp.graph_view || null);
     } catch (err) {
-      console.error("Replay error:", err);
-      setError("Failed to replay last run.");
+      setError("Failed to replay run");
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const handleRunScenario = (scenario: DemoScenario) => {
-    handleSendMessage(scenario.initialMessage);
   };
 
   const handleSignOut = async () => {
@@ -185,91 +156,103 @@ function App() {
   };
 
   if (authLoading) {
-    return <div className="loading-screen">Loading...</div>;
+    return (
+      <div className="loading-screen">
+        <div className="spinner"></div>
+        <p>Loading PoliMi Course Advisor...</p>
+      </div>
+    );
   }
 
   if (!session) {
-    return <LoginPage />;
+    if (selectedDemoCompany) {
+      return (
+        <CompanyDemoView
+          company={selectedDemoCompany}
+          onBack={() => setSelectedDemoCompany(null)}
+        />
+      );
+    }
+    return <LoginPage onSelectCompany={setSelectedDemoCompany} />;
   }
 
-  const statusLabel =
-    backendOnline === null ? "Checking API…" : backendOnline ? "API online" : "API offline";
-
-  const statusClass =
-    backendOnline === null ? "status-unknown" : backendOnline ? "status-online" : "status-offline";
-
   return (
-    <div className="app-root">
+    <div className="app-container">
       <header className="app-header">
-        <div className="header-main">
+        <div className="header-left">
           <h1>PoliMi Course Advisor</h1>
-          <div className="demo-controls">
-            <span className="demo-label">Demos:</span>
+          {backendOnline === false && (
+            <span className="badge error">Backend Offline</span>
+          )}
+          {backendOnline === true && (
+            <span className="badge success">Database Ready</span>
+          )}
+        </div>
+        <div className="header-actions">
+          <button className="new-chat-btn" onClick={handleNewChat} disabled={isLoading}>
+            New Chat
+          </button>
+          {lastRunId && (
+            <button
+              className="replay-btn"
+              onClick={handleReplayLastRun}
+              disabled={isLoading}
+            >
+              Replay Last
+            </button>
+          )}
+          <div className="demo-group">
+            <span className="demo-label">Demo:</span>
             {DEMO_SCENARIOS.map((s) => (
-              <button key={s.id} onClick={() => handleRunScenario(s)} disabled={isLoading} className="demo-btn">
+              <button
+                key={s.label}
+                className="demo-btn"
+                onClick={() => handleSendMessage(s.initialMessage)}
+                disabled={isLoading}
+              >
                 {s.label}
               </button>
             ))}
-            {lastRunId && (
-              <button onClick={handleReplayLastRun} disabled={isLoading} className="replay-btn">
-                Replay Last Run
-              </button>
-            )}
-            <button onClick={handleNewChat} disabled={isLoading} className="new-chat-btn">
-              New Chat
-            </button>
-            <button onClick={handleSignOut} className="signout-btn">
-              Sign Out
-            </button>
           </div>
-        </div>
-        <div className={`backend-status ${statusClass}`}>
-          <span className="dot" />
-          <span className="status-text">{statusLabel}</span>
+          <button className="signout-btn" onClick={handleSignOut}>
+            Sign Out
+          </button>
         </div>
       </header>
+
       <main className="main-layout">
-        <section className="chat-section panel">
-          <div className="panel-header">
-            <h2>Chat</h2>
-          </div>
-          {error && <div className="error-banner">{error}</div>}
+        <section className="chat-section">
           <ChatPane
             messages={messages}
-            isLoading={isLoading}
             onSendMessage={handleSendMessage}
-            disabled={backendOnline === false}
+            isLoading={isLoading}
           />
         </section>
-        <aside className="context-section">
-          <section className="panel">
-            <div className="panel-header">
-              <h2>Your profile</h2>
-            </div>
+
+        <section className="context-section">
+          <div className="context-card profile">
+            <h3>Student Profile</h3>
             <ProfileSummary profile={profile} />
-          </section>
-          <section className="panel" style={{ flex: 1.5 }}>
-            <div className="panel-header">
-              <h2>Course Graph</h2>
-            </div>
+          </div>
+          <div className="context-card graph">
             <GraphPanel
               graphView={graphView}
               selectedCourseCode={selectedCourseCode}
               onSelectCourse={setSelectedCourseCode}
             />
-          </section>
-          <section className="panel" style={{ flex: 2 }}>
-            <div className="panel-header">
-              <h2>Recommended courses</h2>
-            </div>
+          </div>
+          <div className="context-card recommendations">
+            <h3>Recommendations</h3>
             <RecommendationsList
               recommendations={recommendations}
               selectedCourseCode={selectedCourseCode}
               onSelectCourse={setSelectedCourseCode}
             />
-          </section>
-        </aside>
+          </div>
+        </section>
       </main>
+
+      {error && <div className="toast error">{error}</div>}
     </div>
   );
 }

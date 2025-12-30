@@ -20,6 +20,7 @@ class ProfileSignals:
     liked_courses: Set[str]
     liked_neighbors: Set[str]
     interest_matched: Set[str]
+    match_scores: Dict[str, float]  # New: Granular match strength [0, 1]
 
 
 def _build_profile_signals(
@@ -47,6 +48,7 @@ def _build_profile_signals(
     personalization: Dict[str, float] = {node: 0.0 for node in nodes}
     liked_neighbors: Set[str] = set()
     interest_matched: Set[str] = set()
+    match_scores: Dict[str, float] = {}
 
     # Strong seeds: liked courses
     liked_course_weight = 3.0
@@ -69,21 +71,37 @@ def _build_profile_signals(
             if not tokens:
                 continue
 
-            score = 0.0
+            total_match_score = 0.0
+            matches_found = 0
+            
             for q in interest_token_sets:
                 if not q:
                     continue
-                # Use intersection over query length (Query Coverage)
-                # If the course has the interest keyword, score should be high (1.0),
-                # regardless of how long the course description is.
-                intersection_size = len(tokens & q)
-                if intersection_size > 0:
-                    sim = intersection_size / len(q)
-                    score += sim
+                
+                # Hybrid metric: intersection size / query length (Coverage) 
+                # weighted by Jaccard similarity (to penalize overly broad descriptions)
+                intersection = tokens & q
+                if not intersection:
+                    continue
+                
+                coverage = len(intersection) / len(q)
+                jaccard = len(intersection) / len(tokens | q)
+                
+                # We blend coverage (high importance) with jaccard (specificity)
+                # 0.7 Coverage + 0.3 Jaccard ensures specific courses win over generic ones
+                sim = (0.7 * coverage) + (0.3 * jaccard)
+                total_match_score += sim
+                matches_found += 1
 
-            if score > 0:
-                personalization[code] = personalization.get(code, 0.0) + interest_weight * score
-                interest_matched.add(code)
+            if matches_found > 0:
+                # Average match score across all interests/goals that matched
+                # This prevents a course from just accumulating score by matching many goals poorly
+                avg_score = total_match_score / len(interest_token_sets)
+                
+                if avg_score > 1e-4:
+                    personalization[code] = personalization.get(code, 0.0) + interest_weight * avg_score
+                    interest_matched.add(code)
+                    match_scores[code] = min(1.0, avg_score)
 
     # Disliked courses: zero out in personalization
     for code in disliked_courses:
@@ -94,6 +112,7 @@ def _build_profile_signals(
         liked_courses=liked_courses,
         liked_neighbors=liked_neighbors,
         interest_matched=interest_matched,
+        match_scores=match_scores,
     )
 
 
@@ -179,10 +198,22 @@ def rank_courses(
 
         if code in signals.interest_matched:
             tags["matched_interest"] = True
-            final_score *= 2.0
+            # Dynamic multiplier: 1.0 (base) + 1.25 * match_percent
+            # A 100% match gets 2.25x, a 20% match gets 1.25x
+            match_str = signals.match_scores.get(code, 0.0)
+            final_score *= (1.0 + 1.25 * match_str)
 
         if lang_pref in {"EN", "IT"} and course.language == lang_pref:
             tags["language_bonus"] = True
+            final_score *= 1.05
+
+        # Group Weighting: Favor core groups for career paths
+        group = (course.group or "").upper()
+        if group in {"MANDATORY", "METHODS"}:
+            tags["core_group_bonus"] = True
+            final_score *= 1.15
+        elif group == "APPLICATIONS":
+            # Applications are good but shouldn't compete with core unless match is very high
             final_score *= 1.05
 
         if avoid_tokens and tokens.intersection(avoid_tokens):

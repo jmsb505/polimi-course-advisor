@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from .deps import init_data
-from .routers import courses, ranking, runs, talent
+from .routers import courses, ranking, runs, talent, demo
 
 app = FastAPI(
     title="Polimi Course Advisor Backend",
@@ -94,3 +94,4 @@ app.include_router(courses.router, prefix="/api")
 app.include_router(ranking.router, prefix="/api")
 app.include_router(runs.router, prefix="/api")
 app.include_router(talent.router, prefix="/api")
+app.include_router(demo.router, prefix="/api")
