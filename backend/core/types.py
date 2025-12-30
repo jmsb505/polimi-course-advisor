@@ -35,12 +35,18 @@ class GraphNode(TypedDict):
     group: Optional[str]
 
 
+class EdgeReason(TypedDict):
+    type: str
+    value: str
+    contribution: float
+
+
 class GraphEdge(TypedDict):
     source: str
     target: str
     weight: float
     concepts: List[str]
-    reasons: List[str]
+    reasons: List[EdgeReason]
 
 
 class GraphView(TypedDict):

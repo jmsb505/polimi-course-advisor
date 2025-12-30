@@ -1,0 +1,407 @@
+[
+  {
+    "scenario": "ML Engineer",
+    "profile": {
+      "interests": [
+        "machine learning",
+        "neural networks",
+        "python",
+        "big data"
+      ],
+      "avoid": [],
+      "goals": [
+        "become an ML Engineer"
+      ],
+      "language_preference": "EN",
+      "workload_tolerance": "high",
+      "preferred_exam_types": [
+        "project",
+        "oral"
+      ],
+      "liked_courses": [],
+      "disliked_courses": []
+    },
+    "recommendations": [
+      {
+        "code": "054307",
+        "name": "ARTIFICIAL NEURAL NETWORKS AND DEEP LEARNING",
+        "group": "MANDATORY",
+        "language": "UNKNOWN",
+        "cfu": 5.0,
+        "score": 0.08637102473408417,
+        "reason_tags": {
+          "matched_interest": true
+        }
+      },
+      {
+        "code": "063941",
+        "name": "PERFORMANCE MODELLING TECHNIQUES FOR CLOUD COMPUTING, BIG DATA, ARTIFICIAL INTELLIGENCE AND DEEP LEARNING APPLICATIONS",
+        "group": "DOT",
+        "language": "UNKNOWN",
+        "cfu": 5.0,
+        "score": 0.08354569691041393,
+        "reason_tags": {
+          "matched_interest": true
+        }
+      },
+      {
+        "code": "056892",
+        "name": "DATA MINING",
+        "group": "MANDATORY",
+        "language": "UNKNOWN",
+        "cfu": 5.0,
+        "score": 0.08270007660191435,
+        "reason_tags": {
+          "matched_interest": true
+        }
+      },
+      {
+        "code": "063993",
+        "name": "CLOUD COMPUTING: FROM ENTERPRISE APPLICATIONS TO AI@EDGE",
+        "group": "DOT",
+        "language": "UNKNOWN",
+        "cfu": 5.0,
+        "score": 0.0817180924683198,
+        "reason_tags": {
+          "matched_interest": true
+        }
+      },
+      {
+        "code": "056895",
+        "name": "STREAMING DATA ANALYTICS G",
+        "group": "TECH&INNOVATION",
+        "language": "UNKNOWN",
+        "cfu": 5.0,
+        "score": 0.08139837578163574,
+        "reason_tags": {
+          "matched_interest": true
+        }
+      }
+    ]
+  },
+  {
+    "scenario": "Game Developer",
+    "profile": {
+      "interests": [
+        "computer graphics",
+        "C++",
+        "real-time rendering",
+        "GPU programming"
+      ],
+      "avoid": [
+        "biology"
+      ],
+      "goals": [
+        "build a game engine"
+      ],
+      "language_preference": "ANY",
+      "workload_tolerance": "medium",
+      "preferred_exam_types": [
+        "written"
+      ],
+      "liked_courses": [],
+      "disliked_courses": []
+    },
+    "recommendations": [
+      {
+        "code": "062260",
+        "name": "VIDEOGAME DESIGN AND PROGRAMMING",
+        "group": "APPLICATIONS",
+        "language": "UNKNOWN",
+        "cfu": 5.0,
+        "score": 0.09348372453225523,
+        "reason_tags": {
+          "matched_interest": true
+        }
+      },
+      {
+        "code": "095945",
+        "name": "ICT FOR HEALTH CARE",
+        "group": "APPLICATIONS",
+        "language": "UNKNOWN",
+        "cfu": 5.0,
+        "score": 0.08607991894631671,
+        "reason_tags": {
+          "matched_interest": true
+        }
+      },
+      {
+        "code": "063993",
+        "name": "CLOUD COMPUTING: FROM ENTERPRISE APPLICATIONS TO AI@EDGE",
+        "group": "DOT",
+        "language": "UNKNOWN",
+        "cfu": 5.0,
+        "score": 0.07686424634526436,
+        "reason_tags": {
+          "matched_interest": true
+        }
+      },
+      {
+        "code": "056895",
+        "name": "STREAMING DATA ANALYTICS G",
+        "group": "TECH&INNOVATION",
+        "language": "UNKNOWN",
+        "cfu": 5.0,
+        "score": 0.07332205903431986,
+        "reason_tags": {
+          "matched_interest": true
+        }
+      },
+      {
+        "code": "054307",
+        "name": "ARTIFICIAL NEURAL NETWORKS AND DEEP LEARNING",
+        "group": "MANDATORY",
+        "language": "UNKNOWN",
+        "cfu": 5.0,
+        "score": 0.07110031685190099,
+        "reason_tags": {
+          "matched_interest": true
+        }
+      }
+    ]
+  },
+  {
+    "scenario": "Data Scientist / Optimization",
+    "profile": {
+      "interests": [
+        "statistics",
+        "data analysis",
+        "optimization",
+        "information systems"
+      ],
+      "avoid": [
+        "embedded systems"
+      ],
+      "goals": [
+        "handle large-scale data",
+        "decision making"
+      ],
+      "language_preference": "EN",
+      "workload_tolerance": "medium",
+      "preferred_exam_types": [],
+      "liked_courses": [],
+      "disliked_courses": []
+    },
+    "recommendations": [
+      {
+        "code": "095944",
+        "name": "BIOINFORMATICS AND COMPUTATIONAL BIOLOGY",
+        "group": "APPLICATIONS",
+        "language": "UNKNOWN",
+        "cfu": 5.0,
+        "score": 0.07896478346441044,
+        "reason_tags": {
+          "matched_interest": true
+        }
+      },
+      {
+        "code": "056895",
+        "name": "STREAMING DATA ANALYTICS G",
+        "group": "TECH&INNOVATION",
+        "language": "UNKNOWN",
+        "cfu": 5.0,
+        "score": 0.06965009883407142,
+        "reason_tags": {
+          "matched_interest": true
+        }
+      },
+      {
+        "code": "089182",
+        "name": "FORMAL LANGUAGES AND COMPILERS",
+        "group": "GROUNDINGS",
+        "language": "UNKNOWN",
+        "cfu": 5.0,
+        "score": 0.06646316969054221,
+        "reason_tags": {
+          "matched_interest": true
+        }
+      },
+      {
+        "code": "056892",
+        "name": "DATA MINING",
+        "group": "MANDATORY",
+        "language": "UNKNOWN",
+        "cfu": 5.0,
+        "score": 0.06425401820834732,
+        "reason_tags": {
+          "matched_interest": true
+        }
+      },
+      {
+        "code": "056490",
+        "name": "DATA AND INFORMATION QUALITY",
+        "group": "TECH&INNOVATION",
+        "language": "UNKNOWN",
+        "cfu": 5.0,
+        "score": 0.06405182987776187,
+        "reason_tags": {
+          "matched_interest": true
+        }
+      }
+    ]
+  },
+  {
+    "scenario": "Research-oriented (Theory)",
+    "profile": {
+      "interests": [
+        "formal methods",
+        "logic",
+        "advanced algorithms",
+        "computability"
+      ],
+      "avoid": [
+        "software engineering management"
+      ],
+      "goals": [
+        "PhD",
+        "theoretical foundations"
+      ],
+      "language_preference": "ANY",
+      "workload_tolerance": "high",
+      "preferred_exam_types": [
+        "oral"
+      ],
+      "liked_courses": [],
+      "disliked_courses": []
+    },
+    "recommendations": [
+      {
+        "code": "063993",
+        "name": "CLOUD COMPUTING: FROM ENTERPRISE APPLICATIONS TO AI@EDGE",
+        "group": "DOT",
+        "language": "UNKNOWN",
+        "cfu": 5.0,
+        "score": 0.08199423580166489,
+        "reason_tags": {
+          "matched_interest": true
+        }
+      },
+      {
+        "code": "095946",
+        "name": "ADVANCED ALGORITHMS AND PARALLEL PROGRAMMING",
+        "group": "TECH&INNOVATION",
+        "language": "UNKNOWN",
+        "cfu": 5.0,
+        "score": 0.07794138194536623,
+        "reason_tags": {
+          "matched_interest": true
+        }
+      },
+      {
+        "code": "052534",
+        "name": "RECOMMENDER SYSTEMS",
+        "group": "APPLICATIONS",
+        "language": "UNKNOWN",
+        "cfu": 0.0,
+        "score": 0.07733575935859482,
+        "reason_tags": {
+          "matched_interest": true
+        }
+      },
+      {
+        "code": "089182",
+        "name": "FORMAL LANGUAGES AND COMPILERS",
+        "group": "GROUNDINGS",
+        "language": "UNKNOWN",
+        "cfu": 5.0,
+        "score": 0.07404461208881645,
+        "reason_tags": {
+          "matched_interest": true
+        }
+      },
+      {
+        "code": "056890",
+        "name": "UNCERTAINTY IN ARTIFICIAL INTELLIGENCE",
+        "group": "METHODS",
+        "language": "UNKNOWN",
+        "cfu": 0.0,
+        "score": 0.07312816549264918,
+        "reason_tags": {
+          "matched_interest": true
+        }
+      }
+    ]
+  },
+  {
+    "scenario": "Practical / Software Systems",
+    "profile": {
+      "interests": [
+        "cloud computing",
+        "networking",
+        "practical software development",
+        "databases"
+      ],
+      "avoid": [
+        "pure theory",
+        "physics"
+      ],
+      "goals": [
+        "industry developer"
+      ],
+      "language_preference": "EN",
+      "workload_tolerance": "low",
+      "preferred_exam_types": [
+        "project"
+      ],
+      "liked_courses": [],
+      "disliked_courses": []
+    },
+    "recommendations": [
+      {
+        "code": "089183",
+        "name": "DATA BASES 2",
+        "group": "TECH&INNOVATION",
+        "language": "UNKNOWN",
+        "cfu": 5.0,
+        "score": 0.09923133455411039,
+        "reason_tags": {
+          "matched_interest": true
+        }
+      },
+      {
+        "code": "063993",
+        "name": "CLOUD COMPUTING: FROM ENTERPRISE APPLICATIONS TO AI@EDGE",
+        "group": "DOT",
+        "language": "UNKNOWN",
+        "cfu": 5.0,
+        "score": 0.08963280109000309,
+        "reason_tags": {
+          "matched_interest": true
+        }
+      },
+      {
+        "code": "056901",
+        "name": "SYSTEMS AND METHODS FOR BIG AND UNSTRUCTURED DATA",
+        "group": "MANDATORY",
+        "language": "UNKNOWN",
+        "cfu": 5.0,
+        "score": 0.08492942873004392,
+        "reason_tags": {
+          "matched_interest": true
+        }
+      },
+      {
+        "code": "056490",
+        "name": "DATA AND INFORMATION QUALITY",
+        "group": "TECH&INNOVATION",
+        "language": "UNKNOWN",
+        "cfu": 5.0,
+        "score": 0.08447226185111249,
+        "reason_tags": {
+          "matched_interest": true
+        }
+      },
+      {
+        "code": "063938",
+        "name": "DATA SCIENCE FOR BIOINFORMATICS AND HEALTHCARE",
+        "group": "DOT",
+        "language": "UNKNOWN",
+        "cfu": 5.0,
+        "score": 0.08227491307637738,
+        "reason_tags": {
+          "matched_interest": true
+        }
+      }
+    ]
+  }
+]

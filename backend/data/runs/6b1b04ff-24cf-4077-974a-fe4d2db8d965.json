@@ -1,0 +1,2290 @@
+{
+  "run_id": "6b1b04ff-24cf-4077-974a-fe4d2db8d965",
+  "timestamp": "2025-12-29T15:37:36.922973",
+  "payload": {
+    "reply": "That’s great to hear! Machine Learning is a fascinating field with lots of opportunities. Since you enjoy Python, data structures, and have an interest in neural networks and big data, here are a few things to consider as you select your courses:\n\n1. **Preferred Topics**: You might want to focus on courses related to machine learning, artificial intelligence, and data science. Look for classes that specifically cover neural networks and big data technologies.\n\n2. **Workload Tolerance**: Consider how much time and effort you can dedicate to your studies. Some courses may require significant projects or extensive programming assignments, especially in machine learning.\n\n3. **Exam Formats**: Think about whether you prefer written exams, projects, or presentations. Machine Learning courses often include practical projects that can be beneficial for hands-on experience.\n\n4. **Language Preferences**: The courses at PoliMi are typically offered in English and Italian. Make sure to choose courses that are taught in a language you're comfortable with.\n\nWith these considerations in mind, I recommend looking into courses that focus on machine learning algorithms, data mining, and big data analytics. Also, check if there are any workshops or projects that allow you to apply your skills in real-world scenarios.\n\nIf you need specific course recommendations or have other questions, feel free to ask!",
+    "updated_profile": {
+      "interests": [
+        "Python",
+        "data structures",
+        "neural networks",
+        "big data"
+      ],
+      "avoid": [],
+      "goals": [
+        "Machine Learning Engineer"
+      ],
+      "language_preference": "ANY",
+      "workload_tolerance": null,
+      "preferred_exam_types": [],
+      "liked_courses": [],
+      "disliked_courses": [],
+      "ready_for_recommendations": true
+    },
+    "recommendations": [
+      {
+        "code": "063941",
+        "name": "PERFORMANCE MODELLING TECHNIQUES FOR CLOUD COMPUTING, BIG DATA, ARTIFICIAL INTELLIGENCE AND DEEP LEARNING APPLICATIONS",
+        "score": 0.08144060168577166,
+        "group": "DOT",
+        "explanation": "This course will enhance your understanding of performance modeling in cloud computing and big data, aligning well with your interest in neural networks and big data.",
+        "cfu": 5.0,
+        "semester": 1,
+        "language": "UNKNOWN",
+        "reason_tags": [
+          "matched_interest"
+        ]
+      },
+      {
+        "code": "054307",
+        "name": "ARTIFICIAL NEURAL NETWORKS AND DEEP LEARNING",
+        "score": 0.08133512137279884,
+        "group": "MANDATORY",
+        "explanation": "As a mandatory course focused on artificial neural networks and deep learning, it directly supports your goal of becoming a Machine Learning Engineer.",
+        "cfu": 5.0,
+        "semester": 1,
+        "language": "UNKNOWN",
+        "reason_tags": [
+          "matched_interest"
+        ]
+      },
+      {
+        "code": "056892",
+        "name": "DATA MINING",
+        "score": 0.07982983840854932,
+        "group": "MANDATORY",
+        "explanation": "Data mining is crucial for your interests in data structures and big data, providing essential skills for a career in machine learning.",
+        "cfu": 5.0,
+        "semester": 1,
+        "language": "UNKNOWN",
+        "reason_tags": [
+          "matched_interest"
+        ]
+      },
+      {
+        "code": "056895",
+        "name": "STREAMING DATA ANALYTICS G",
+        "score": 0.07884741618951539,
+        "group": "TECH&INNOVATION",
+        "explanation": "Streaming Data Analytics will give you hands-on experience with real-time data processing, which is important for your aspirations in machine learning.",
+        "cfu": 5.0,
+        "semester": 1,
+        "language": "UNKNOWN",
+        "reason_tags": [
+          "matched_interest"
+        ]
+      },
+      {
+        "code": "095944",
+        "name": "BIOINFORMATICS AND COMPUTATIONAL BIOLOGY",
+        "score": 0.07754941023672715,
+        "group": "APPLICATIONS",
+        "explanation": "While primarily focused on bioinformatics, this course can expand your knowledge of data analysis techniques, which may be beneficial for interdisciplinary applications in machine learning.",
+        "cfu": 5.0,
+        "semester": 1,
+        "language": "UNKNOWN",
+        "reason_tags": [
+          "matched_interest"
+        ]
+      }
+    ],
+    "graph_view": {
+      "nodes": [
+        {
+          "code": "095944",
+          "label": "BIOINFORMATICS AND COMPUTATIONAL BIOLOGY",
+          "score": 0.03794168854018231,
+          "is_recommended": true,
+          "group": "APPLICATIONS"
+        },
+        {
+          "code": "054307",
+          "label": "ARTIFICIAL NEURAL NETWORKS AND DEEP LEARNING",
+          "score": 0.03218572898941868,
+          "is_recommended": true,
+          "group": "MANDATORY"
+        },
+        {
+          "code": "056892",
+          "label": "DATA MINING",
+          "score": 0.03218572898941868,
+          "is_recommended": true,
+          "group": "MANDATORY"
+        },
+        {
+          "code": "056895",
+          "label": "STREAMING DATA ANALYTICS G",
+          "score": 0.03097778539840455,
+          "is_recommended": true,
+          "group": "TECH&INNOVATION"
+        },
+        {
+          "code": "063941",
+          "label": "PERFORMANCE MODELLING TECHNIQUES FOR CLOUD COMPUTING, BIG DATA, ARTIFICIAL INTELLIGENCE AND DEEP LEARNING APPLICATIONS",
+          "score": 0.028921333490377253,
+          "is_recommended": true,
+          "group": "DOT"
+        },
+        {
+          "code": "095945",
+          "label": "ICT FOR HEALTH CARE",
+          "score": 0.03794168854018231,
+          "is_recommended": false,
+          "group": "APPLICATIONS"
+        },
+        {
+          "code": "052534",
+          "label": "RECOMMENDER SYSTEMS",
+          "score": 0.03762982607809108,
+          "is_recommended": false,
+          "group": "APPLICATIONS"
+        },
+        {
+          "code": "062260",
+          "label": "VIDEOGAME DESIGN AND PROGRAMMING",
+          "score": 0.03762982607809108,
+          "is_recommended": false,
+          "group": "APPLICATIONS"
+        },
+        {
+          "code": "089182",
+          "label": "FORMAL LANGUAGES AND COMPILERS",
+          "score": 0.03412165101178322,
+          "is_recommended": false,
+          "group": "GROUNDINGS"
+        },
+        {
+          "code": "054443",
+          "label": "SOFTWARE ENGINEERING 2",
+          "score": 0.03218572898941868,
+          "is_recommended": false,
+          "group": "MANDATORY"
+        },
+        {
+          "code": "056889",
+          "label": "FOUNDATIONS OF ARTIFICIAL INTELLIGENCE",
+          "score": 0.03218572898941868,
+          "is_recommended": false,
+          "group": "MANDATORY"
+        },
+        {
+          "code": "056901",
+          "label": "SYSTEMS AND METHODS FOR BIG AND UNSTRUCTURED DATA",
+          "score": 0.03218572898941868,
+          "is_recommended": false,
+          "group": "MANDATORY"
+        },
+        {
+          "code": "059448",
+          "label": "CREATIVITY, SCIENCE AND INNOVATION",
+          "score": 0.0318284773102307,
+          "is_recommended": false,
+          "group": "SOFT SKILLS"
+        },
+        {
+          "code": "089183",
+          "label": "DATA BASES 2",
+          "score": 0.030977785398404553,
+          "is_recommended": false,
+          "group": "TECH&INNOVATION"
+        },
+        {
+          "code": "095946",
+          "label": "ADVANCED ALGORITHMS AND PARALLEL PROGRAMMING",
+          "score": 0.030977785398404553,
+          "is_recommended": false,
+          "group": "TECH&INNOVATION"
+        },
+        {
+          "code": "052537",
+          "label": "TECHNOLOGIES FOR INFORMATION SYSTEMS",
+          "score": 0.03097778539840455,
+          "is_recommended": false,
+          "group": "TECH&INNOVATION"
+        },
+        {
+          "code": "056490",
+          "label": "DATA AND INFORMATION QUALITY",
+          "score": 0.03097778539840455,
+          "is_recommended": false,
+          "group": "TECH&INNOVATION"
+        },
+        {
+          "code": "063937",
+          "label": "ADVANCED TOPICS IN CODESIGN OF DOMAIN-SPECIFIC ACCELERATED COMPUTING ARCHITECTURES AND SYSTEMS",
+          "score": 0.028921333490377253,
+          "is_recommended": false,
+          "group": "DOT"
+        },
+        {
+          "code": "063938",
+          "label": "DATA SCIENCE FOR BIOINFORMATICS AND HEALTHCARE",
+          "score": 0.028921333490377253,
+          "is_recommended": false,
+          "group": "DOT"
+        },
+        {
+          "code": "063993",
+          "label": "CLOUD COMPUTING: FROM ENTERPRISE APPLICATIONS TO AI@EDGE",
+          "score": 0.028921333490377253,
+          "is_recommended": false,
+          "group": "DOT"
+        },
+        {
+          "code": "056890",
+          "label": "UNCERTAINTY IN ARTIFICIAL INTELLIGENCE",
+          "score": 0.028239950342101732,
+          "is_recommended": false,
+          "group": "METHODS"
+        },
+        {
+          "code": "056893",
+          "label": "MULTIAGENT SYSTEMS",
+          "score": 0.028239950342101732,
+          "is_recommended": false,
+          "group": "METHODS"
+        },
+        {
+          "code": "099993",
+          "label": "IMAGE ANALYSIS AND COMPUTER VISION",
+          "score": 0.028239950342101732,
+          "is_recommended": false,
+          "group": "METHODS"
+        },
+        {
+          "code": "097677",
+          "label": "COMPUTER ETHICS",
+          "score": 0.0117460489297278,
+          "is_recommended": false,
+          "group": "MANDATORY"
+        },
+        {
+          "code": "088983",
+          "label": "FOUNDATIONS OF OPERATIONS RESEARCH",
+          "score": 0.008497171846976554,
+          "is_recommended": false,
+          "group": "MANDATORY"
+        }
+      ],
+      "edges": [
+        {
+          "source": "095944",
+          "target": "095945",
+          "weight": 1.7615384615384615,
+          "concepts": [
+            "Same Group: APPLICATIONS",
+            "Shared SSD: ING-INF/05",
+            "High text similarity"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "APPLICATIONS",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            },
+            {
+              "type": "text_similarity",
+              "value": "score: 0.26",
+              "contribution": 0.2615384615384615
+            }
+          ]
+        },
+        {
+          "source": "052534",
+          "target": "062260",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: APPLICATIONS",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "APPLICATIONS",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "052537",
+          "target": "056490",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: TECH&INNOVATION",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "TECH&INNOVATION",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054307",
+          "target": "054443",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: MANDATORY",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "MANDATORY",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054307",
+          "target": "056889",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: MANDATORY",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "MANDATORY",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054307",
+          "target": "056892",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: MANDATORY",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "MANDATORY",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054307",
+          "target": "056901",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: MANDATORY",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "MANDATORY",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054443",
+          "target": "056889",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: MANDATORY",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "MANDATORY",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054443",
+          "target": "056901",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: MANDATORY",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "MANDATORY",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056889",
+          "target": "056901",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: MANDATORY",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "MANDATORY",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056890",
+          "target": "056893",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: METHODS",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "METHODS",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056890",
+          "target": "099993",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: METHODS",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "METHODS",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056892",
+          "target": "054443",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: MANDATORY",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "MANDATORY",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056892",
+          "target": "056889",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: MANDATORY",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "MANDATORY",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056892",
+          "target": "056901",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: MANDATORY",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "MANDATORY",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056893",
+          "target": "099993",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: METHODS",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "METHODS",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056895",
+          "target": "052537",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: TECH&INNOVATION",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "TECH&INNOVATION",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056895",
+          "target": "056490",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: TECH&INNOVATION",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "TECH&INNOVATION",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056895",
+          "target": "089183",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: TECH&INNOVATION",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "TECH&INNOVATION",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056895",
+          "target": "095946",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: TECH&INNOVATION",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "TECH&INNOVATION",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "063937",
+          "target": "063938",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: DOT",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "DOT",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "063937",
+          "target": "063993",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: DOT",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "DOT",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "063938",
+          "target": "063993",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: DOT",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "DOT",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "063941",
+          "target": "063937",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: DOT",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "DOT",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "063941",
+          "target": "063938",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: DOT",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "DOT",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "063941",
+          "target": "063993",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: DOT",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "DOT",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "089183",
+          "target": "052537",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: TECH&INNOVATION",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "TECH&INNOVATION",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "089183",
+          "target": "056490",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: TECH&INNOVATION",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "TECH&INNOVATION",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "089183",
+          "target": "095946",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: TECH&INNOVATION",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "TECH&INNOVATION",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "095944",
+          "target": "052534",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: APPLICATIONS",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "APPLICATIONS",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "095944",
+          "target": "062260",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: APPLICATIONS",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "APPLICATIONS",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "095945",
+          "target": "052534",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: APPLICATIONS",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "APPLICATIONS",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "095945",
+          "target": "062260",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: APPLICATIONS",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "APPLICATIONS",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "095946",
+          "target": "052537",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: TECH&INNOVATION",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "TECH&INNOVATION",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "095946",
+          "target": "056490",
+          "weight": 1.5,
+          "concepts": [
+            "Same Group: TECH&INNOVATION",
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_group",
+              "value": "TECH&INNOVATION",
+              "contribution": 0.6
+            },
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "052534",
+          "target": "052537",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "052534",
+          "target": "054443",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "052534",
+          "target": "056490",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "052534",
+          "target": "056889",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "052534",
+          "target": "056890",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "052534",
+          "target": "056893",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "052534",
+          "target": "056901",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "052534",
+          "target": "059448",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "052534",
+          "target": "063937",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "052534",
+          "target": "063938",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "052534",
+          "target": "063993",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "052534",
+          "target": "089182",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "052534",
+          "target": "089183",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "052534",
+          "target": "095946",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "052534",
+          "target": "099993",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "052537",
+          "target": "056890",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "052537",
+          "target": "056893",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "052537",
+          "target": "063937",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "052537",
+          "target": "063938",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "052537",
+          "target": "063993",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "052537",
+          "target": "099993",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054307",
+          "target": "052534",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054307",
+          "target": "052537",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054307",
+          "target": "056490",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054307",
+          "target": "056890",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054307",
+          "target": "056893",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054307",
+          "target": "056895",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054307",
+          "target": "059448",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054307",
+          "target": "062260",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054307",
+          "target": "063937",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054307",
+          "target": "063938",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054307",
+          "target": "063941",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054307",
+          "target": "063993",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054307",
+          "target": "089182",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054307",
+          "target": "089183",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054307",
+          "target": "095945",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054307",
+          "target": "095946",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054307",
+          "target": "099993",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054443",
+          "target": "052537",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054443",
+          "target": "056490",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054443",
+          "target": "056890",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054443",
+          "target": "056893",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054443",
+          "target": "059448",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054443",
+          "target": "063937",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054443",
+          "target": "063938",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054443",
+          "target": "063993",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054443",
+          "target": "089183",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054443",
+          "target": "095946",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "054443",
+          "target": "099993",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056490",
+          "target": "056890",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056490",
+          "target": "056893",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056490",
+          "target": "063937",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056490",
+          "target": "063938",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056490",
+          "target": "063993",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056490",
+          "target": "099993",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056889",
+          "target": "052537",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056889",
+          "target": "056490",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056889",
+          "target": "056890",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056889",
+          "target": "056893",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056889",
+          "target": "059448",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056889",
+          "target": "063937",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056889",
+          "target": "063938",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056889",
+          "target": "063993",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056889",
+          "target": "089183",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056889",
+          "target": "095946",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056889",
+          "target": "099993",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056892",
+          "target": "052534",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056892",
+          "target": "052537",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056892",
+          "target": "056490",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056892",
+          "target": "056890",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056892",
+          "target": "056893",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056892",
+          "target": "056895",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056892",
+          "target": "059448",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056892",
+          "target": "062260",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056892",
+          "target": "063937",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056892",
+          "target": "063938",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056892",
+          "target": "063941",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056892",
+          "target": "063993",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056892",
+          "target": "089182",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056892",
+          "target": "089183",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056892",
+          "target": "095945",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056892",
+          "target": "095946",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056892",
+          "target": "099993",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056895",
+          "target": "052534",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        },
+        {
+          "source": "056895",
+          "target": "054443",
+          "weight": 0.9,
+          "concepts": [
+            "Shared SSD: ING-INF/05"
+          ],
+          "reasons": [
+            {
+              "type": "shared_ssd",
+              "value": "ING-INF/05",
+              "contribution": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    "run_id": null
+  }
+}

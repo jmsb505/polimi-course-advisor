@@ -12,6 +12,8 @@ venv/
 ENV/
 env/
 pip-wheel-metadata/
+.env*.local
+
 
 # Node / JS
 node_modules/
@@ -37,3 +39,8 @@ Thumbs.db
 # Misc
 *.tmp
 *.bak
+
+# Supabase (local CLI artifacts)
+supabase/.temp/
+supabase/.branches/
+supabase/.env

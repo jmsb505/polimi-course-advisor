@@ -1,0 +1,21 @@
+{
+  "run_id": "a2992bc0-76df-4b2f-814a-ffa938c010f0",
+  "timestamp": "2025-12-29T15:27:22.038283",
+  "payload": {
+    "reply": "Hello! How can I assist you today? Are you looking for information or advice about the Computer Science and Engineering MSc program at Politecnico di Milano?",
+    "updated_profile": {
+      "interests": [],
+      "avoid": [],
+      "goals": [],
+      "language_preference": "ANY",
+      "workload_tolerance": null,
+      "preferred_exam_types": [],
+      "liked_courses": [],
+      "disliked_courses": [],
+      "ready_for_recommendations": null
+    },
+    "recommendations": [],
+    "graph_view": null,
+    "run_id": null
+  }
+}

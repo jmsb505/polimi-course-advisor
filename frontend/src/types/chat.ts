@@ -39,12 +39,18 @@ export interface GraphNode {
     group: string | null;
 }
 
+export interface EdgeReason {
+    type: string;
+    value: string;
+    contribution: number;
+}
+
 export interface GraphEdge {
     source: string;
     target: string;
     weight: number;
     concepts: string[];
-    reasons: string[];
+    reasons: EdgeReason[];
 }
 
 export interface GraphView {
@@ -55,9 +61,11 @@ export interface GraphView {
 export interface ChatRequestPayload {
     messages: ChatMessage[];
     current_profile?: StudentProfile;
+    top_k?: number;
 }
 
 export interface ChatResponsePayload {
+    run_id?: string;
     reply: string;
     updated_profile: StudentProfile;
     recommendations: RankedCourse[];

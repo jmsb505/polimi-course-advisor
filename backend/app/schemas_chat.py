@@ -61,12 +61,18 @@ class GraphNode(BaseModel):
     group: Optional[str] = None
 
 
+class EdgeReason(BaseModel):
+    type: str  # "shared_group" | "shared_ssd" | "text_similarity" | "keyword_overlap" | "other"
+    value: str
+    contribution: float
+
+
 class GraphEdge(BaseModel):
     source: str
     target: str
     weight: float
     concepts: List[str]
-    reasons: List[str]
+    reasons: List[EdgeReason]
 
 
 class GraphView(BaseModel):
@@ -99,3 +105,4 @@ class ChatResponse(BaseModel):
     updated_profile: StudentProfileModel
     recommendations: List[CourseRecommendation]
     graph_view: Optional[GraphView] = None
+    run_id: Optional[str] = None

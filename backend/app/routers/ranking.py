@@ -4,9 +4,10 @@ from typing import Any, Dict, List, Optional
 
 from fastapi import APIRouter, HTTPException, Query
 
-from ..deps import get_courses_raw, get_graph
+from ..deps import get_courses_raw, get_graph, get_global_pagerank
 from ..models import StudentProfileIn, RankedCourseOut
 from ..schemas_chat import ChatRequest, ChatResponse, StudentProfileModel
+from ...core.cache import ranking_cache, profile_cache_key
 
 # Import Core definitions
 from ...core.models import Course
@@ -22,6 +23,7 @@ from ...core.llm import (
 )
 from ...core.types import ChatMessage
 from ...app.schemas_chat import CourseRecommendation, GraphView
+from ...core.runs import create_run_snapshot
 
 # Router prefix is empty here so we can define /rank and /chat explicitly.
 # main.py mounts this router with prefix="/api".
@@ -148,12 +150,21 @@ async def rank_endpoint(
     ),
 ) -> List[RankedCourseOut]:
     """
-    Rank courses for a given student profile using the existing
-    PageRank-based ranking logic from Phase 2.
+    Rank courses for a given student profile using the PageRank-based ranking logic.
     """
-    # Reuse valid logic
-    recommendations_dicts = get_recommendations_for_profile(profile.model_dump(), top_k)
-    return [RankedCourseOut.model_validate(r) for r in recommendations_dicts]
+    profile_dict = profile.model_dump()
+    cache_key = profile_cache_key(profile_dict, {"top_k": top_k, "mode": "rank_only"})
+    
+    cached = ranking_cache.get(cache_key)
+    if cached:
+        print(f"[rank] rank_cache hit for {cache_key[:8]}", flush=True)
+        return cached
+
+    recommendations_dicts = get_recommendations_for_profile(profile_dict, top_k)
+    results = [RankedCourseOut.model_validate(r) for r in recommendations_dicts]
+    
+    ranking_cache.set(cache_key, results)
+    return results
 
 
 @router.post("/chat", response_model=ChatResponse)
@@ -191,32 +202,29 @@ async def chat_endpoint(payload: ChatRequest) -> ChatResponse:
     )
 
     # 2) Prepare previous profile dict (if any).
-    previous_profile_dict = None
+    previous_profile_dict = {}
     if payload.current_profile is not None:
         previous_profile_dict = payload.current_profile.to_profile_dict()
 
+    # 3) Generate the assistant's natural-language reply & updated profile
+    reply_text = "I encountered a minor issue processing your request, but I've updated your recommendations based on our conversation so far."
+    updated_profile_dict = previous_profile_dict.copy()
+    
     try:
-        # 3) Generate the assistant's natural-language reply.
+        # LLM Reply
         reply_text = generate_reply(messages_for_llm)
-
-        # 4) Ask the LLM for an updated profile (including this new reply in the history).
+        
+        # LLM Profile Extraction (with history)
         messages_for_profile: List[ChatMessage] = list(messages_for_llm)
-        messages_for_profile.append(
-            {
-                "role": "assistant",
-                "content": reply_text,
-            }
-        )
+        messages_for_profile.append({"role": "assistant", "content": reply_text})
+        
+        extracted = extract_profile(messages_for_profile, previous_profile=previous_profile_dict)
+        if extracted:
+            updated_profile_dict = extracted
+    except Exception as exc:
+        print(f"[chat] LLM Fallback triggered: {exc}", flush=True)
 
-        updated_profile_dict = extract_profile(
-            messages_for_profile,
-            previous_profile=previous_profile_dict,
-        )
-    except LLMServiceError as exc:
-        # Surface as a 503 so the frontend can show a nice error message.
-        raise HTTPException(status_code=503, detail=str(exc))
-
-    # 5) Convert the updated profile dict into the API-facing Pydantic model.
+    # 4) Convert to API-facing model
     updated_profile_model = StudentProfileModel(
         interests=updated_profile_dict.get("interests", []),
         avoid=updated_profile_dict.get("avoid", []),
@@ -229,87 +237,85 @@ async def chat_endpoint(payload: ChatRequest) -> ChatResponse:
         ready_for_recommendations=updated_profile_dict.get("ready_for_recommendations"),
     )
 
-    # 6) Compute recommendations using the same logic as /api/rank.
-    profile_for_ranking = updated_profile_model.to_profile_dict()
+    # 5) Ranking + Caching
     top_k = payload.top_k or 5
-
-    # Prepare extended fields
-    recs_out: List[CourseRecommendation] = []
-    graph_view_out: Optional[GraphView] = None
-
-    # Only compute recommendations when the LLM says the profile is ready.
-    if updated_profile_model.ready_for_recommendations:
-        recommendations_dicts = get_recommendations_for_profile(
-            profile_for_ranking,
-            top_k=top_k,
-        )
-
-        # 7) Generate explanations
-        try:
-            explanations_map = generate_course_explanations(
-                updated_profile_dict, recommendations_dicts
-            )
-        except Exception:
-            explanations_map = {}
-
-        # 8) Convert to Pydantic objects
-        rec_codes = []
-        for r_dict in recommendations_dicts:
-            code = r_dict["code"]
-            rec_codes.append(code)
-            
-            recs_out.append(
-                CourseRecommendation(
-                    code=code,
-                    name=r_dict.get("name", ""),
-                    score=r_dict.get("score", 0.0),
-                    group=r_dict.get("group"),
-                    cfu=r_dict.get("cfu", 0.0),
-                    semester=r_dict.get("semester", 1),
-                    language=r_dict.get("language", "UNKNOWN"),
-                    reason_tags=r_dict.get("reason_tags", []),
-                    explanation=explanations_map.get(str(code))
-                )
-            )
-
-        # 9) Build Graph View
-        courses_raw = get_courses_raw()
-        graph_obj = get_graph()
+    cache_key = profile_cache_key(updated_profile_dict, {"top_k": top_k})
+    
+    cached_result = ranking_cache.get(cache_key)
+    if cached_result:
+        print(f"[chat] rank_cache hit for key {cache_key[:8]}...", flush=True)
+        recs_out = cached_result["recommendations"]
+        graph_view_out = cached_result["graph_view"]
+    else:
+        print(f"[chat] rank_cache miss for key {cache_key[:8]}...", flush=True)
+        recs_out = []
+        graph_view_out = None
         
-        # We need Course objects for the helper
-        all_courses_objs = []
-        for item in courses_raw:
-             # Just quick reconstruction for the helper
-             # (ideally we should cache this list of objects)
-             ssd_raw = item.get("ssd", []) or []
-             ssd_list = [str(s).strip() for s in ssd_raw if s] if isinstance(ssd_raw, list) else [str(ssd_raw).strip()]
-             all_courses_objs.append(
-                Course(
-                    code=str(item.get("code", "")).strip(),
-                    name=str(item.get("name", "")).strip(),
-                    cfu=float(item.get("cfu", 0)),
-                    semester=int(item.get("semester", 0)),
+        # Only compute if LLM or history says we're ready (or fallback if explicitly told)
+        if updated_profile_model.ready_for_recommendations or previous_profile_dict:
+            # 6) Compute recommendations
+            recommendations_dicts = get_recommendations_for_profile(updated_profile_dict, top_k=top_k)
+            
+            # 7) Generate explanations
+            try:
+                explanations_map = generate_course_explanations(updated_profile_dict, recommendations_dicts)
+            except Exception:
+                explanations_map = {}
+
+            # 8) Convert to Pydantic objects & build graph
+            rec_codes = []
+            for r_dict in recommendations_dicts:
+                code = r_dict["code"]
+                rec_codes.append(code)
+                recs_out.append(CourseRecommendation(
+                    code=code, name=r_dict.get("name", ""), score=r_dict.get("score", 0.0),
+                    group=r_dict.get("group"), cfu=r_dict.get("cfu", 0.0),
+                    semester=r_dict.get("semester", 1), language=r_dict.get("language", "UNKNOWN"),
+                    reason_tags=r_dict.get("reason_tags", []), explanation=explanations_map.get(str(code))
+                ))
+
+            # 9) Build Graph View (Stable)
+            courses_raw = get_courses_raw()
+            graph_obj = get_graph()
+            pagerank_scores = get_global_pagerank()
+            
+            all_courses_objs = []
+            for item in courses_raw:
+                ssd_raw = item.get("ssd", []) or []
+                ssd_list = [str(s).strip() for s in ssd_raw if s] if isinstance(ssd_raw, list) else [str(ssd_raw).strip()]
+                all_courses_objs.append(Course(
+                    code=str(item.get("code", "")).strip(), name=str(item.get("name", "")).strip(),
+                    cfu=float(item.get("cfu", 0)), semester=int(item.get("semester", 0)),
                     language=str(item.get("language", "") or "UNKNOWN").strip().upper(),
                     group=str(item.get("group", "") or "UNKNOWN").strip(),
-                    ssd=ssd_list,
-                    description=str(item.get("description", "") or "").strip(),
+                    ssd=ssd_list, description=str(item.get("description", "") or "").strip(),
                     raw=item
-                )
-             )
+                ))
 
-        gv_dict = build_graph_view_for_recommendations(
-            recommended_codes=rec_codes,
-            graph=graph_obj,
-            courses=all_courses_objs,
-            max_neighbors_per_node=4
-        )
-        # Convert typed dict to Pydantic model
-        if gv_dict and gv_dict["nodes"]:
-             graph_view_out = GraphView(**gv_dict)
+            gv_dict = build_graph_view_for_recommendations(
+                recommended_codes=rec_codes, graph=graph_obj,
+                courses=all_courses_objs, pagerank_scores=pagerank_scores,
+                max_neighbors_per_node=4
+            )
+            if gv_dict and gv_dict["nodes"]:
+                graph_view_out = GraphView(**gv_dict)
 
-    return ChatResponse(
+            # Store in cache
+            ranking_cache.set(cache_key, {"recommendations": recs_out, "graph_view": graph_view_out})
+
+    response = ChatResponse(
         reply=reply_text,
         updated_profile=updated_profile_model,
         recommendations=recs_out,
         graph_view=graph_view_out
     )
+
+    # Persist snapshot (Step 1 requirement)
+    try:
+        snapshot_payload = response.model_dump()
+        run_id = create_run_snapshot(snapshot_payload)
+        response.run_id = run_id
+    except Exception as exc:
+        print(f"[chat] Snapshot persistence failed: {exc}", flush=True)
+
+    return response

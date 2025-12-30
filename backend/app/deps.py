@@ -10,6 +10,7 @@ from .models import CourseDetail
 from ..core.graph import build_course_graph
 # Import Course dataclass for type conversion
 from ..core.models import Course
+from ..core.pagerank import global_pagerank
 
 # Resolve backend/ directory (one level above app/)
 BASE_DIR = Path(__file__).resolve().parents[1]
@@ -18,6 +19,7 @@ COURSES_PATH = DATA_DIR / "courses.json"
 
 _courses_cache: Optional[List[Dict[str, Any]]] = None
 _graph_cache: Any = None
+_global_pagerank_cache: Optional[Dict[str, float]] = None
 
 
 def _load_courses_from_disk() -> List[Dict[str, Any]]:
@@ -35,7 +37,7 @@ def init_data() -> None:
     Initialize in-memory data caches (courses + graph).
     Called once at app startup.
     """
-    global _courses_cache, _graph_cache
+    global _courses_cache, _graph_cache, _global_pagerank_cache
     _courses_cache = _load_courses_from_disk()
     
     # Convert dicts to Course objects for graph building
@@ -60,6 +62,11 @@ def init_data() -> None:
         course_objects.append(c_obj)
 
     _graph_cache = build_course_graph(course_objects)
+
+    # Compute global centrality once
+    print("[startup] Computing global PageRank...", flush=True)
+    _global_pagerank_cache = global_pagerank(_graph_cache)
+    print(f"[startup] Global PageRank entries: {len(_global_pagerank_cache)}", flush=True)
 
 
 def get_courses_raw() -> List[Dict[str, Any]]:
@@ -88,3 +95,12 @@ def get_graph() -> Any:
     if _graph_cache is None:
         raise RuntimeError("Graph not initialized. Call init_data() at startup.")
     return _graph_cache
+
+
+def get_global_pagerank() -> Dict[str, float]:
+    """
+    Return the precomputed global PageRank scores.
+    """
+    if _global_pagerank_cache is None:
+        raise RuntimeError("Global PageRank not initialized. Call init_data() at startup.")
+    return _global_pagerank_cache

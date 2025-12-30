@@ -1,0 +1,122 @@
+[
+    {
+        "name": "ML Engineer",
+        "profile": {
+            "interests": [
+                "machine learning",
+                "neural networks",
+                "python",
+                "big data"
+            ],
+            "avoid": [],
+            "goals": [
+                "become an ML Engineer"
+            ],
+            "language_preference": "EN",
+            "workload_tolerance": "high",
+            "preferred_exam_types": [
+                "project",
+                "oral"
+            ],
+            "liked_courses": [],
+            "disliked_courses": []
+        }
+    },
+    {
+        "name": "Game Developer",
+        "profile": {
+            "interests": [
+                "computer graphics",
+                "C++",
+                "real-time rendering",
+                "GPU programming"
+            ],
+            "avoid": [
+                "biology"
+            ],
+            "goals": [
+                "build a game engine"
+            ],
+            "language_preference": "ANY",
+            "workload_tolerance": "medium",
+            "preferred_exam_types": [
+                "written"
+            ],
+            "liked_courses": [],
+            "disliked_courses": []
+        }
+    },
+    {
+        "name": "Data Scientist / Optimization",
+        "profile": {
+            "interests": [
+                "statistics",
+                "data analysis",
+                "optimization",
+                "information systems"
+            ],
+            "avoid": [
+                "embedded systems"
+            ],
+            "goals": [
+                "handle large-scale data",
+                "decision making"
+            ],
+            "language_preference": "EN",
+            "workload_tolerance": "medium",
+            "preferred_exam_types": [],
+            "liked_courses": [],
+            "disliked_courses": []
+        }
+    },
+    {
+        "name": "Research-oriented (Theory)",
+        "profile": {
+            "interests": [
+                "formal methods",
+                "logic",
+                "advanced algorithms",
+                "computability"
+            ],
+            "avoid": [
+                "software engineering management"
+            ],
+            "goals": [
+                "PhD",
+                "theoretical foundations"
+            ],
+            "language_preference": "ANY",
+            "workload_tolerance": "high",
+            "preferred_exam_types": [
+                "oral"
+            ],
+            "liked_courses": [],
+            "disliked_courses": []
+        }
+    },
+    {
+        "name": "Practical / Software Systems",
+        "profile": {
+            "interests": [
+                "cloud computing",
+                "networking",
+                "practical software development",
+                "databases"
+            ],
+            "avoid": [
+                "pure theory",
+                "physics"
+            ],
+            "goals": [
+                "industry developer"
+            ],
+            "language_preference": "EN",
+            "workload_tolerance": "low",
+            "preferred_exam_types": [
+                "project"
+            ],
+            "liked_courses": [],
+            "disliked_courses": []
+        }
+    }
+]

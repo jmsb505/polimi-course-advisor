@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ForceGraph2D, { type ForceGraphMethods } from "react-force-graph-2d";
 import type { GraphView } from "../types/chat";
 
@@ -6,6 +6,27 @@ interface GraphPanelProps {
     graphView: GraphView | null;
     selectedCourseCode?: string | null;
     onSelectCourse?: (code: string) => void;
+}
+
+interface ExtendedGraphNode {
+    id: string;
+    x?: number;
+    y?: number;
+    code: string;
+    label: string;
+    group: string | null;
+    score: number;
+    isRecommended: boolean;
+    val: number;
+    color: string;
+}
+
+interface ExtendedGraphLink {
+    source: string | ExtendedGraphNode;
+    target: string | ExtendedGraphNode;
+    weight: number;
+    concepts: string[];
+    reasons: { type: string; value: string; contribution: number }[];
 }
 
 export const GraphPanel: React.FC<GraphPanelProps> = ({
@@ -33,63 +54,81 @@ export const GraphPanel: React.FC<GraphPanelProps> = ({
         return () => resizeObserver.disconnect();
     }, [graphView]);
 
+    const [graphData, setGraphData] = useState<{ nodes: ExtendedGraphNode[]; links: ExtendedGraphLink[] }>({
+        nodes: [],
+        links: []
+    });
+    const [prevViewProps, setPrevViewProps] = useState<{ view: GraphView | null; selected: string | null | undefined }>({
+        view: null,
+        selected: undefined
+    });
+
+    // Official React pattern for derived state that needs to preserve previous values
+    if (graphView !== prevViewProps.view || selectedCourseCode !== prevViewProps.selected) {
+        setPrevViewProps({ view: graphView, selected: selectedCourseCode });
+
+        if (!graphView) {
+            setGraphData({ nodes: [], links: [] });
+        } else {
+            const scores = graphView.nodes.map((n) => n.score);
+            const minScore = scores.length ? Math.min(...scores) : 0;
+            const maxScore = scores.length ? Math.max(...scores) : 1;
+
+            const scaleScore = (score: number) => {
+                if (maxScore === minScore) return 3;
+                const t = (score - minScore) / (maxScore - minScore);
+                return 3 + t * 7;
+            };
+
+            const oldNodesMap = new Map(graphData.nodes.map(n => [n.id, n]));
+
+            const nodes: ExtendedGraphNode[] = graphView.nodes.map((n) => {
+                const isSelected = selectedCourseCode && n.code === selectedCourseCode;
+                const color = isSelected
+                    ? "#f97316"
+                    : n.is_recommended
+                        ? "#eab308"
+                        : "#38bdf8";
+
+                const existingNode = oldNodesMap.get(n.code);
+                return {
+                    ...(existingNode || {}),
+                    id: n.code,
+                    code: n.code,
+                    label: n.label,
+                    group: n.group,
+                    score: n.score,
+                    isRecommended: n.is_recommended,
+                    val: scaleScore(n.score),
+                    color,
+                };
+            });
+
+            const links: ExtendedGraphLink[] = graphView.edges.map((e) => ({
+                source: e.source,
+                target: e.target,
+                weight: e.weight,
+                concepts: e.concepts,
+                reasons: e.reasons.map(r => ({
+                    type: String(r.type),
+                    value: String(r.value),
+                    contribution: Number(r.contribution)
+                })),
+            }));
+
+            setGraphData({ nodes, links });
+        }
+    }
+
     // Force configuration effect
     useEffect(() => {
         if (fgRef.current) {
-            // Apply strong repulsion
             fgRef.current.d3Force('charge')?.strength(-200);
-            // Apply longer link distance
             fgRef.current.d3Force('link')?.distance(100);
-            // Re-heat simulation
             fgRef.current.d3ReheatSimulation();
         }
-    }, [graphView, dimensions]);
+    }, [graphData, dimensions]);
 
-    const graphData = useMemo(() => {
-        if (!graphView) {
-            return { nodes: [], links: [] };
-        }
-
-        const scores = graphView.nodes.map((n) => n.score);
-        const minScore = scores.length ? Math.min(...scores) : 0;
-        const maxScore = scores.length ? Math.max(...scores) : 1;
-
-        const scaleScore = (score: number) => {
-            if (maxScore === minScore) return 3;
-            const t = (score - minScore) / (maxScore - minScore);
-            return 3 + t * 7;
-        };
-
-        const nodes = graphView.nodes.map((n) => {
-            const isSelected = selectedCourseCode && n.code === selectedCourseCode;
-            const color = isSelected
-                ? "#f97316"
-                : n.is_recommended
-                    ? "#eab308"
-                    : "#38bdf8";
-
-            return {
-                id: n.code,
-                code: n.code,
-                label: n.label,
-                group: n.group,
-                score: n.score,
-                isRecommended: n.is_recommended,
-                val: scaleScore(n.score),
-                color,
-            };
-        });
-
-        const links = graphView.edges.map((e) => ({
-            source: e.source,
-            target: e.target,
-            weight: e.weight,
-            concepts: e.concepts,
-            reasons: e.reasons,
-        }));
-
-        return { nodes, links };
-    }, [graphView, selectedCourseCode]);
 
     if (!graphView || graphData.nodes.length === 0) {
         return (
@@ -149,24 +188,37 @@ export const GraphPanel: React.FC<GraphPanelProps> = ({
                             linkSource="source"
                             linkTarget="target"
                             nodeVal="val"
-                            nodeLabel={(node: any) =>
-                                `[${node.code}] ${node.label}`
-                            }
-                            linkLabel={(link: any) => {
-                                const concepts = link.concepts || [];
-                                const reasons = link.reasons || [];
-                                const parts = [];
-                                if (concepts.length > 0) parts.push(`Concepts: ${concepts.join(", ")}`);
-                                if (reasons.length > 0) parts.push(`Reasons: ${reasons.join(", ")}`);
-                                return parts.length > 0 ? parts.join("\n") : "Related";
+                            nodeLabel={(nodeObj) => {
+                                const node = nodeObj as ExtendedGraphNode;
+                                return `
+                <div style="padding: 4px; font-size: 12px; background: #0f172a; border: 1px solid #334155; border-radius: 4px;">
+                  <div style="font-weight: bold; color: #f9fafb;">[${node.code}] ${node.label}</div>
+                  <div style="color: #9ca3af; font-size: 11px;">Group: ${node.group || "N/A"}</div>
+                  <div style="color: #fbbf24; font-size: 11px;">Score: ${node.score.toFixed(4)} ${node.isRecommended ? " (Recommended)" : ""}</div>
+                </div>
+              `;
+                            }}
+                            linkLabel={(linkObj) => {
+                                const l = linkObj as ExtendedGraphLink;
+                                const concepts = l.concepts || [];
+                                const reasons = l.reasons || [];
+                                const topReasons = reasons.slice(0, 2).map((r) => `${r.type}: ${r.value}`).join("<br/>");
+
+                                return `
+                  <div style="padding: 4px; font-size: 11px; background: #0f172a; border: 1px solid #334155; border-radius: 4px;">
+                    <div style="font-weight: bold; color: #e5e7eb; border-bottom: 1px solid #1f2937; margin-bottom: 2px;">Edge Analysis</div>
+                    <div style="color: #38bdf8;">${concepts.join(" &bull; ")}</div>
+                    ${topReasons ? `<div style="color: #9ca3af; margin-top: 2px;">${topReasons}</div>` : ""}
+                  </div>
+                `;
                             }}
                             linkHoverPrecision={20}
                             nodeRelSize={8}
                             backgroundColor="rgba(0,0,0,0)" // transparent
                             linkColor={() => "rgba(148, 163, 184, 0.6)"}
-                            linkWidth={(link: any) => 0.5 + (link.weight || 0) * 2}
-                            linkDirectionalParticles={(link: any) =>
-                                link.weight && link.weight > 0.3 ? 2 : 0
+                            linkWidth={(linkObj) => 0.5 + ((linkObj as ExtendedGraphLink).weight || 0) * 2}
+                            linkDirectionalParticles={(linkObj) =>
+                                (linkObj as ExtendedGraphLink).weight && (linkObj as ExtendedGraphLink).weight > 0.3 ? 2 : 0
                             }
                             linkDirectionalParticleSpeed={0.01}
                             linkDirectionalParticleWidth={2}
@@ -181,9 +233,9 @@ export const GraphPanel: React.FC<GraphPanelProps> = ({
                                     fgRef.current.zoomToFit(400);
                                 }
                             }}
-                            onNodeClick={(node: any) => {
+                            onNodeClick={(nodeObj) => {
                                 if (onSelectCourse) {
-                                    onSelectCourse(node.code);
+                                    onSelectCourse((nodeObj as ExtendedGraphNode).code);
                                 }
                             }}
                         />
