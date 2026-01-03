@@ -23,7 +23,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onSelectCompany }) => {
       const data = await getDemoCompanies();
       setCompanies(data);
       setShowDemo(true);
-    } catch (err) {
+    } catch (_err) {
       setError("Failed to load demo companies");
     } finally {
       setIsLoading(false);

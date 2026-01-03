@@ -61,9 +61,9 @@ function App() {
     let cancelled = false;
 
     getHealth()
-      .then((data: any) => {
-        if (!cancelled) {
-          setBackendOnline(data.database === "ok");
+      .then((data: unknown) => {
+        if (!cancelled && data && typeof data === "object" && "database" in data) {
+          setBackendOnline((data as { database: string }).database === "ok");
         }
       })
       .catch(() => {
@@ -119,7 +119,7 @@ function App() {
       setProfile(resp.updated_profile);
       setRecommendations(resp.recommendations);
       setGraphView(resp.graph_view || null);
-    } catch (err) {
+    } catch (_err) {
       setError("Failed to replay run");
     } finally {
       setIsLoading(false);

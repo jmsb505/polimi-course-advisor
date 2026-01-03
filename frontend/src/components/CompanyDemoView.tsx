@@ -3,106 +3,106 @@ import type { DemoCompany, RankedCandidate } from "../types/demo";
 import { getRankedCandidates } from "../api/demo";
 
 interface CompanyDemoViewProps {
-    company: DemoCompany;
-    onBack: () => void;
+  company: DemoCompany;
+  onBack: () => void;
 }
 
 export const CompanyDemoView: React.FC<CompanyDemoViewProps> = ({
-    company,
-    onBack,
+  company,
+  onBack,
 }) => {
-    const [candidates, setCandidates] = useState<RankedCandidate[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+  const [candidates, setCandidates] = useState<RankedCandidate[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-    useEffect(() => {
-        const fetchCandidates = async () => {
-            setIsLoading(true);
-            setError(null);
-            try {
-                const data = await getRankedCandidates(company.id);
-                setCandidates(data);
-            } catch (err) {
-                setError("Failed to load candidates");
-            } finally {
-                setIsLoading(false);
-            }
-        };
-        fetchCandidates();
-    }, [company.id]);
+  useEffect(() => {
+    const fetchCandidates = async () => {
+      setIsLoading(true);
+      setError(null);
+      try {
+        const data = await getRankedCandidates(company.id);
+        setCandidates(data);
+      } catch (_err) {
+        setError("Failed to load candidates");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchCandidates();
+  }, [company.id]);
 
-    return (
-        <div className="demo-view-container">
-            <div className="demo-content">
-                <header className="demo-header">
-                    <button className="back-link" onClick={onBack}>
-                        ← Back to Companies
-                    </button>
-                    <div className="company-info">
-                        <h1>{company.name}</h1>
-                        <p className="industry-badge">{company.industry}</p>
-                        <p className="tagline">{company.tagline}</p>
+  return (
+    <div className="demo-view-container">
+      <div className="demo-content">
+        <header className="demo-header">
+          <button className="back-link" onClick={onBack}>
+            ← Back to Companies
+          </button>
+          <div className="company-info">
+            <h1>{company.name}</h1>
+            <p className="industry-badge">{company.industry}</p>
+            <p className="tagline">{company.tagline}</p>
+          </div>
+        </header>
+
+        <main className="candidates-section">
+          <h2>Top Talent Matches</h2>
+          <p className="section-subtitle">
+            Ranked based on company's tech stack, hiring keywords, and job requirements.
+          </p>
+
+          {isLoading ? (
+            <div className="loading-state">Finding best matches...</div>
+          ) : error ? (
+            <div className="error-state">{error}</div>
+          ) : (
+            <div className="candidates-grid">
+              {candidates.map((cand, idx) => (
+                <div key={cand.public_handle} className="candidate-card">
+                  <div className="card-rank">#{idx + 1}</div>
+                  <div className="card-header">
+                    <div className="handle">{cand.public_handle}</div>
+                    <div className="score-badge">
+                      {(cand.score * 100).toFixed(0)}% Fit
                     </div>
-                </header>
+                  </div>
 
-                <main className="candidates-section">
-                    <h2>Top Talent Matches</h2>
-                    <p className="section-subtitle">
-                        Ranked based on company's tech stack, hiring keywords, and job requirements.
-                    </p>
+                  <div className="card-body">
+                    <div className="detail-section">
+                      <label>Matched Strengths</label>
+                      <div className="chips">
+                        {cand.matched_terms.map((term) => (
+                          <span key={term} className="chip match">
+                            {term}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
 
-                    {isLoading ? (
-                        <div className="loading-state">Finding best matches...</div>
-                    ) : error ? (
-                        <div className="error-state">{error}</div>
-                    ) : (
-                        <div className="candidates-grid">
-                            {candidates.map((cand, idx) => (
-                                <div key={cand.public_handle} className="candidate-card">
-                                    <div className="card-rank">#{idx + 1}</div>
-                                    <div className="card-header">
-                                        <div className="handle">{cand.public_handle}</div>
-                                        <div className="score-badge">
-                                            {(cand.score * 100).toFixed(0)}% Fit
-                                        </div>
-                                    </div>
+                    <div className="detail-section">
+                      <label>Skills</label>
+                      <div className="chips">
+                        {cand.skills.slice(0, 4).map((s) => (
+                          <span key={s} className="chip">
+                            {s}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
 
-                                    <div className="card-body">
-                                        <div className="detail-section">
-                                            <label>Matched Strengths</label>
-                                            <div className="chips">
-                                                {cand.matched_terms.map((term) => (
-                                                    <span key={term} className="chip match">
-                                                        {term}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
-
-                                        <div className="detail-section">
-                                            <label>Skills</label>
-                                            <div className="chips">
-                                                {cand.skills.slice(0, 4).map((s) => (
-                                                    <span key={s} className="chip">
-                                                        {s}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
-
-                                        <div className="detail-section">
-                                            <label>Goals</label>
-                                            <p className="goals-text">{cand.goals[0]}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    )}
-                </main>
+                    <div className="detail-section">
+                      <label>Goals</label>
+                      <p className="goals-text">{cand.goals[0]}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
+          )}
+        </main>
+      </div>
 
-            <style>{`
+      <style>{`
         .demo-view-container {
           min-height: 100vh;
           width: 100vw;
@@ -286,6 +286,6 @@ export const CompanyDemoView: React.FC<CompanyDemoViewProps> = ({
           color: #fca5a5;
         }
       `}</style>
-        </div>
-    );
+    </div>
+  );
 };
